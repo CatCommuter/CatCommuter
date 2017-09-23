@@ -1,0 +1,7 @@
+Cattracks app (written in C# so it can be on Apple, Google, and Microsoft phones) and webpage (for any device with internet) will look up which buses are running at the specified time, and which buses go from user specified start to user specified end
+
+Later version can also use stops nearby to user's specified stop (within walking distance, so user can walk to a near stop if it's not too far, and within a certain distance)
+
+Later version can use multiple lies or busses to get from start to finish faster (start point A to bus stop B in between to bus stop C on different bus... to last bus stop finish destination)
+
+Later version can incorporate Merced city busses as well as cattracks 
