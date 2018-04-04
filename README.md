@@ -1,3 +1,5 @@
+![Alt text](cattrackslogo.png?raw=true "CatCommuter")
+
 # MobileApp
 
 ## App Description:
@@ -16,4 +18,4 @@ Any commuter who uses the UC Merced Cattracks bus system.
 
 ## Impact:
 
-This app will make commuting easier in Merced, and enable people to find the optimal rute quickly and efficiently. The app should be open source, enabling future developers to continue updating the bus schedule for years to come.
+This app will make commuting easier in Merced, and enable people to find the optimal route quickly and efficiently. The app should be open source, enabling future developers to continue updating the bus schedule for years to come.
