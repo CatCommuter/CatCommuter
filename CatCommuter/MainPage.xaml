@@ -7,7 +7,36 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <!-- Doesn't seem that the appbar appears in the XAML designer...-->
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Sync"
+                              Label="Refresh"/>
+                <AppBarButton Icon="Add"
+                              Label="Add"/>
+                <AppBarButton Icon="Find"
+                              Label="Search"/>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Help"
+                              Label="About"/>
+                <AppBarButton Label="Force close app"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <!-- StackPanels are like an array for content design. 
+        They can be ordered to display elements horizontally or vertically-->
+        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button x:Name="randomButton" Content="Hi I'm a button" Click="randomButton_Click"/>
+            <TextBlock x:Name="outputTextBlock" Text="And I'm a textblock where you display text" />
+        </StackPanel>
     </Grid>
+
+    
+    
+
 </Page>

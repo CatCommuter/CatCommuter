@@ -26,5 +26,11 @@ namespace CatCommuter
         {
             this.InitializeComponent();
         }
+
+        int times = 0;
+        private void randomButton_Click(object sender, RoutedEventArgs e)
+        {
+            outputTextBlock.Text = "Oh no that button you pressed " + ++times + " times t r i g g e r e d an event!";
+        }
     }
 }
