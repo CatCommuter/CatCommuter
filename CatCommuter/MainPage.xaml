@@ -26,17 +26,16 @@
         </CommandBar>
     </Page.BottomAppBar>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <!-- StackPanels are like an array for content design. 
-        They can be ordered to display elements horizontally or vertically-->
-        <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Button x:Name="randomButton" Content="Hi I'm a button" Click="randomButton_Click"/>
-            <TextBlock x:Name="outputTextBlock" Text="And I'm a textblock where you display text" />
-        </StackPanel>
-    </Grid>
+    <!-- StackPanels are like an array for content design. 
+    They can be ordered to display elements horizontally or vertically-->
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Button x:Name="randomButton" Content="Hi I'm a button" Click="randomButton_Click"/>
+        <TextBlock x:Name="outputTextBlock" Text="And I'm a textblock where you display text" />
+        <Button x:Name="goSomewhereButton" Content="Go somewhere else" Click="goSomewhereButton_Click"/>
+    </StackPanel>
 
-    
-    
+
+
 
 </Page>

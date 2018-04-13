@@ -32,5 +32,10 @@ namespace CatCommuter
         {
             outputTextBlock.Text = "Oh no that button you pressed " + ++times + " times t r i g g e r e d an event!";
         }
+
+        private void goSomewhereButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(BlankPage1));
+        }
     }
 }

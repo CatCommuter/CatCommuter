@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="CatCommuter.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CatCommuter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!-- And this is a grid, the 2D variant of a StackPanel-->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- You can specify which row and column you wish an element to exist when within a <Grid>-->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="CatCommuter" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Add item" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+        
+        <!-- This is probably the sanest way to specify spacing for margins -->
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            
+            <!-- Wrapping elements in a ScrollViewer makes it scrollable -->
+            <ScrollViewer>
+                <StackPanel>
+                    <TextBlock x:Name="textBlock" 
+                                   Text="Enter stuff to go in cells" 
+                                   FontSize="24"
+                                   Height="Auto"/>
+                    <TextBox x:Name="cell1"
+                             InputScope="AlphanumericFullWidth" 
+                             PlaceholderText="Name" 
+                             FontFamily="Global User Interface" 
+                             Margin="10"/>
+                    <TextBox x:Name="cell2"
+                             InputScope="AlphanumericFullWidth" 
+                             PlaceholderText="Description" 
+                             FontFamily="Global User Interface"
+                             Margin="10"
+                             MaxHeight="100"
+                             TextWrapping="Wrap"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
