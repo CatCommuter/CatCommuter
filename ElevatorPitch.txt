@@ -1,0 +1,19 @@
+CatCommuter is a mobile app that streamlines shared transportation for students and organizations.
+
+Currently student bus commuters must manually search through several changing bus schedule charts, which gets messy and complicated when combining multiple buses, lines, systems, or other transportation. But with CatCommuter, we do all the heavy lifting for you. You put in your destination, and boom, bang, done. It spits out the bus routes to take and you're done. No missing the bus while poring over bus tables. No juggling multiple charts or even sites. CatCommuter takes care of all of that for you.
+
+We're a team of four CS students, and believe that CatCommuter would make communal commutes easy.
+
+Similar apps such as Cattracks (2012) have taken on this issue before, but they required the developer to maintain the application each semester with new schedules. CatCommuter requires little or no maintenance from developers, enable users to easily make adjustments to schedules, and is open source. That way it could be used for years.
+
+CatCommuter is different from similar apps like Google Maps because we allow anyone to easily use their own route and schedule data, without making it public. They need only use our GUI put their schedule in a JSON file, and select it from the app. This ensures that CatCommuter can be used for private transportation systems such as:
+
+-Company or University Bus systems
+-Airport Shuttles
+-Taxi Services
+-Commercial bus services (Amtrak, Greyhound, Yarts)
+-Groups of friends that share rides
+
+The plan is to make public transportation easy, efficient, and fast, while reducing traffic and minimizing our carbon footprint. Our app enables under-served populations to commute almost as easily as if they were driving, and cheaper too.
+
+Please try and review CatCommuter, as your feedback is extremely valuable to us, and enables us to make a better product.
