@@ -8,11 +8,14 @@ namespace CatCommuter
 {
     class BusLine
     {
-        ISet<BusStop> busStops = new HashSet<BusStop>();
+        public string name { get; set; }
+        private ISet<BusStop> busStops = new HashSet<BusStop>();
 
-        ISet<BusStop> getBusStops()
+        public ISet<BusStop> getBusStops()
         {
             return busStops;
         }
+
+        
     }
 }
