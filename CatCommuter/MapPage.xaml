@@ -1,0 +1,17 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CatCommuter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Windows.UI.Xaml.Controls.Maps"
+    x:Class="CatCommuter.MapPage"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Custom:MapControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="640" Width="360" CanDrag="True" MapServiceToken="grnmZzGPAQ9RwhLIn5Id~YbgDRxe0X8ZKRnr3AHxQVA~AkhogxQw41df_OUgph1EVfLCuBuDgxjrPxeqY0kmrG18pU_wZ02gn0H9LeoIqWaf"/>
+        <TextBox x:Name="MapSearchTextBox" HorizontalAlignment="Left" Margin="10,10,0,0" Text="TextBox" VerticalAlignment="Top" Width="340" RequestedTheme="Light"/>
+
+    </Grid>
+</Page>
