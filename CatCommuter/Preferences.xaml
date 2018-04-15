@@ -6,16 +6,31 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Horizontal">
-            <ToggleSwitch Header="Toggle Switch Example" 
+
+        <ListView x:Name="route_ListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Border Background="LightGray" Height="200" Width="200">
+                            <TextBlock Text="{Binding}" 
+                               FontSize="48" Foreground="Green"/>
+                        </Border>
+                        <StackPanel Orientation="Horizontal">
+                            <ToggleSwitch Header="Toggle Switch Example" 
         OffContent="Do work" OnContent="Working on project" 
-        Toggled="ToggleSwitch_Toggled"/>
-            <ProgressRing x:Name="progress1"/>
-        </StackPanel>
-
-
+        Toggled="ToggleSwitch_Toggled" />
+                            <!--ProgressRing x:Name="progress1"/-->
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Items>
+                <x:String>One</x:String>
+                <ListViewItem>Two</ListViewItem>
+            </ListView.Items>
+        </ListView>
     </Grid>
     
 

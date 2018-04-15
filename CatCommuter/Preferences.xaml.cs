@@ -40,7 +40,12 @@ namespace CatCommuter
                     a.Handled = true;
                 }
             };
-            
+
+            IList<string> routeList = new List<string>();
+            routeList.Add("sample text");
+            routeList.Add("what a cool app!");
+            route_ListView.ItemsSource = routeList;
+
         }
 
        
@@ -53,6 +58,7 @@ namespace CatCommuter
             ToggleSwitch toggleSwitch = sender as ToggleSwitch;
             if (toggleSwitch != null)
             {
+                /*
                 if (toggleSwitch.IsOn == true)
                 {
                     progress1.IsActive = true;
@@ -63,9 +69,8 @@ namespace CatCommuter
                     progress1.IsActive = false;
                     progress1.Visibility = Visibility.Collapsed;
                 }
+                */
             }
         }
-
-
     }
 }
