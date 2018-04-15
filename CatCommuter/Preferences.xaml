@@ -6,8 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Horizontal">
+            <ToggleSwitch Header="Toggle Switch Example" 
+        OffContent="Do work" OnContent="Working on project" 
+        Toggled="ToggleSwitch_Toggled"/>
+            <ProgressRing x:Name="progress1"/>
+        </StackPanel>
 
     </Grid>
+
 </Page>
