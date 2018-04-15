@@ -46,5 +46,10 @@ namespace CatCommuter
         {
             Frame.Navigate(typeof(Preferences));
         }
+
+        private void MapPage_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MapPage));
+        }
     }
 }

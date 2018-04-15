@@ -8,10 +8,30 @@
     x:Class="CatCommuter.MapPage"
     mc:Ignorable="d">
 
+    <!-- Doesn't seem that the appbar appears in the XAML designer...-->
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Sync"
+                              Label="Refresh" 
+                              Click="AppBarButton_Click"/>
+                <AppBarButton Icon="Add"
+                              Label="Add"/>
+                <AppBarButton Icon="Find"
+                              Label="Search"/>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Help"
+                              Label="About"/>
+                <AppBarButton Label="Force close app"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <Custom:MapControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="640" Width="360" CanDrag="True" MapServiceToken="grnmZzGPAQ9RwhLIn5Id~YbgDRxe0X8ZKRnr3AHxQVA~AkhogxQw41df_OUgph1EVfLCuBuDgxjrPxeqY0kmrG18pU_wZ02gn0H9LeoIqWaf"/>
-        <TextBox x:Name="MapSearchTextBox" HorizontalAlignment="Left" Margin="10,10,0,0" Text="TextBox" VerticalAlignment="Top" Width="340" RequestedTheme="Light"/>
+        <Custom:MapControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CanDrag="True" MapServiceToken="grnmZzGPAQ9RwhLIn5Id~YbgDRxe0X8ZKRnr3AHxQVA~AkhogxQw41df_OUgph1EVfLCuBuDgxjrPxeqY0kmrG18pU_wZ02gn0H9LeoIqWaf"/>
+        <TextBox x:Name="MapSearchTextBox" HorizontalAlignment="Stretch" Margin="10,10,10,0" VerticalAlignment="Top" AcceptsReturn="True" InputScope="Maps" PlaceholderText="Search"/>
 
     </Grid>
 </Page>

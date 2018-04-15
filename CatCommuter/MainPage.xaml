@@ -34,6 +34,7 @@
         <TextBlock x:Name="outputTextBlock" Text="And I'm a textblock where you display text" />
         <Button x:Name="goSomewhereButton" Content="Go somewhere else" Click="goSomewhereButton_Click"/>
         <Button x:Name="goPreferencesButton" Content="Go somewhere else2" Click="goPreferencesButton_Click"/>
+        <Button x:Name="MapPage" Content="Map" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="MapPage_Click"/>
     </StackPanel>
 
 
