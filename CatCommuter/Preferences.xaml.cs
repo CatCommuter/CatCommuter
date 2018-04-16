@@ -42,8 +42,8 @@ namespace CatCommuter
             };
 
             IList<string> routeList = new List<string>();
-            routeList.Add("sample text");
-            routeList.Add("what a cool app!");
+            routeList.Add("This is a dynamic list");
+            routeList.Add("you can add more items");
             route_ListView.ItemsSource = routeList;
 
         }
@@ -71,6 +71,11 @@ namespace CatCommuter
                 }
                 */
             }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

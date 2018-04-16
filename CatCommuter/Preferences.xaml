@@ -5,31 +5,27 @@
     xmlns:local="using:CatCommuter"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" HorizontalAlignment="Left">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-        <ListView x:Name="route_ListView">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Border Background="LightGray" Height="200" Width="200">
-                            <TextBlock Text="{Binding}" 
-                               FontSize="48" Foreground="Green"/>
-                        </Border>
+        <ListView>
+            <TextBlock HorizontalAlignment="Left" Text="Preferences" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            
+            <ListView x:Name="route_ListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <ToggleSwitch Header="Toggle Switch Example" 
-        OffContent="Do work" OnContent="Working on project" 
-        Toggled="ToggleSwitch_Toggled" />
-                            <!--ProgressRing x:Name="progress1"/-->
+                            <Grid>
+                                <TextBlock Text="{Binding}" VerticalAlignment="Center"></TextBlock>
+                            </Grid>
+                            <Grid>
+                                <ToggleSwitch VerticalAlignment="Center" />
+                            </Grid>
                         </StackPanel>
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.Items>
-                <x:String>One</x:String>
-                <ListViewItem>Two</ListViewItem>
-            </ListView.Items>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
         </ListView>
     </Grid>
     
