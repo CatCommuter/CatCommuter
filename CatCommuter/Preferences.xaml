@@ -24,8 +24,10 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
             </ListView>
+
+            <Button x:Name="AddItem" Content="Add Item" Click="AddItem_Click"/>
+
         </ListView>
     </Grid>
     

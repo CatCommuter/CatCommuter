@@ -1,19 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -24,6 +14,9 @@ namespace CatCommuter
     /// </summary>
     public sealed partial class Preferences : Page
     {
+
+        IList<string> routeList = new List<string>();
+
         public Preferences()
         {
             this.InitializeComponent();
@@ -41,15 +34,20 @@ namespace CatCommuter
                 }
             };
 
-            IList<string> routeList = new List<string>();
+            
             routeList.Add("This is a dynamic list");
             routeList.Add("you can add more items");
             route_ListView.ItemsSource = routeList;
 
         }
 
-       
 
+        private void AddItem_Click(object sender, RoutedEventArgs e)
+        {
+            routeList.Add("You added an item!");
+            route_ListView.ItemsSource = null;
+            route_ListView.ItemsSource = routeList;
+        }
 
 
 
