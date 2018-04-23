@@ -9,13 +9,14 @@ namespace CatCommuter
     class BusLine
     {
         public string name { get; set; }
-        private ISet<BusStop> busStops = new HashSet<BusStop>();
+        public TimeSpan timeSpan { get; }
+        private ISet<BusStop> busStops { get; }
 
-        public ISet<BusStop> getBusStops()
+        public BusLine(string name, TimeSpan timeSpan, ISet<BusStop> busStops)
         {
-            return busStops;
+            this.name = name;
+            this.timeSpan = timeSpan;
+            this.busStops = busStops;
         }
-
-        
     }
 }

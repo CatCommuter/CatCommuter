@@ -8,21 +8,21 @@ namespace CatCommuter
 {
     class BusStop
     {
-        ISet<BusLine> busLines = new HashSet<BusLine>();
+        public string location { get; } //TODO
+        IDictionary<BusLine, ISet<DateTime>> busLines { get; }
 
-        public ISet<BusLine> GetBusLines()
+
+        public BusStop(IDictionary<BusLine, ISet<DateTime>> busLines, string location)
         {
-            return busLines;
+            this.busLines = busLines;
+            this.location = location;
         }
 
-        public void getTime(BusStop stop)
+        public ISet<DateTime> getTimes(BusLine busLine)
         {
-            //TODO
-        }
-
-        public void getLocation()
-        {
-            //TODO
+            ISet<DateTime> returnSet = null;
+            busLines.TryGetValue(busLine, out returnSet);
+            return returnSet;
         }
     }
 }
