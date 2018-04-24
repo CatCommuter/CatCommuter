@@ -8,7 +8,7 @@ namespace CatCommuter
 {
     class BusStopManager
     {
-        private static BusStopManager Instance;
+        private static BusStopManager instance;
 
         ISet<BusStop> busStops = new HashSet<BusStop>();
 
@@ -30,16 +30,16 @@ namespace CatCommuter
             busStops.Add(new BusStop("Muir Pass", busLines, "the location"));
         }
 
-        public static BusStopManager GetBusStopManager
+        public static BusStopManager Instance
         {
             get
             {
-                if (Instance == null)
+                if (instance == null)
                 {
-                    Instance = new BusStopManager();
+                    instance = new BusStopManager();
 
                 }
-                return Instance;
+                return instance;
             }
         }
 

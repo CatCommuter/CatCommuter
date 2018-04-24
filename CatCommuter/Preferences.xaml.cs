@@ -16,12 +16,10 @@ namespace CatCommuter
     {
 
         IList<string> routeList = new List<string>();
-
+        BusStopManager bsManager;
         public Preferences()
         {
             this.InitializeComponent();
-            this.InitializeComponent();
-
             //Add a back button
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, a) =>
@@ -34,7 +32,7 @@ namespace CatCommuter
                 }
             };
 
-            
+            bsManager = BusStopManager.Instance;
             routeList.Add("This is a dynamic list");
             routeList.Add("you can add more items");
             route_ListView.ItemsSource = routeList;
