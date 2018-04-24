@@ -12,6 +12,9 @@
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Setting"
+                              Label="Preferences" 
+                              Click="goPreferencesButton_Click"/>
                 <AppBarButton Icon="Sync"
                               Label="Refresh" 
                               Click="AppBarButton_Click"/>

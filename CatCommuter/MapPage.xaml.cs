@@ -31,5 +31,9 @@ namespace CatCommuter
         {
 
         }
+        private void goPreferencesButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Preferences));
+        }
     }
 }
