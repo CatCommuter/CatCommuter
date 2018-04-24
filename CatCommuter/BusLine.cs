@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CatCommuter
 {
-    class BusLine
+    public class BusLine
     {
         public string name { get; set; }
         public DateTime startTime { get; } //date and time of current startTime for this week
         public TimeSpan timeSpan { get; }
-        public ISet<BusStop> busStops { get; set; }
+        ISet<BusStop> busStops { get; set; }
 
         public BusLine(string name, TimeSpan timeSpan, DateTime startTime)
         {
@@ -20,5 +20,11 @@ namespace CatCommuter
             this.busStops = new HashSet<BusStop>();
             this.startTime = startTime;
         }
+
+    }
+    public class BusLineViewModel
+    {
+        private BusLine defaultBusLine = new BusLine("testLine", new TimeSpan(20), new DateTime());
+        public BusLine DefaultBusLine { get { return this.defaultBusLine; } }
     }
 }

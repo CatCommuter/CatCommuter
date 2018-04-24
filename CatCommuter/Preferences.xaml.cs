@@ -16,10 +16,11 @@ namespace CatCommuter
     {
 
         IList<string> routeList = new List<string>();
-
+        BusStopManager bsManager = BusStopManager.Instance;
+        ISet<BusLine> busLines;
+       
         public Preferences()
         {
-            this.InitializeComponent();
             this.InitializeComponent();
 
             //Add a back button
@@ -34,13 +35,15 @@ namespace CatCommuter
                 }
             };
 
+            this.ViewModel = new BusLineViewModel();
+            busLines = bsManager.getBusLines();
             
             routeList.Add("This is a dynamic list");
             routeList.Add("you can add more items");
-            route_ListView.ItemsSource = routeList;
+            route_ListView.ItemsSource = busLines;
 
         }
-
+        public BusLineViewModel ViewModel { get; set; }
 
         private void AddItem_Click(object sender, RoutedEventArgs e)
         {
