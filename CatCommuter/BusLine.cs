@@ -20,9 +20,5 @@ namespace CatCommuter
             this.busStops = new HashSet<BusStop>();
             this.startTime = startTime;
         }
-           public string getname()
-        {
-            return name;
-        }
     }
 }
