@@ -14,8 +14,7 @@ namespace CatCommuter
     /// </summary>
     public sealed partial class Preferences : Page
     {
-
-        IList<string> routeList = new List<string>();
+        
         BusStopManager bsManager = BusStopManager.Instance;
         ISet<BusLine> busLines;
        
@@ -35,21 +34,20 @@ namespace CatCommuter
                 }
             };
 
-            this.ViewModel = new BusLineViewModel();
-            busLines = bsManager.getBusLines();
             
-            routeList.Add("This is a dynamic list");
-            routeList.Add("you can add more items");
+            busLines = bsManager.getBusLines();
+            DataContext = busLines;
+
             route_ListView.ItemsSource = busLines;
 
         }
-        public BusLineViewModel ViewModel { get; set; }
+  
 
         private void AddItem_Click(object sender, RoutedEventArgs e)
         {
-            routeList.Add("You added an item!");
+            busLines.Add(new BusLine("TestLine", new TimeSpan(), new DateTime()));
             route_ListView.ItemsSource = null;
-            route_ListView.ItemsSource = routeList;
+            route_ListView.ItemsSource = busLines;
         }
 
 

@@ -16,7 +16,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <Grid>
-                                <!--TextBlock Text="{x:Bind ViewModel.DefaultBusLine.name}" VerticalAlignment="Center"></-->
+                                <TextBlock Text="{Binding name}" VerticalAlignment="Center"/>
                             </Grid>
                             <Grid>
                                 <ToggleSwitch VerticalAlignment="Center" />

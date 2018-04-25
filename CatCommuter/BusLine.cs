@@ -20,11 +20,9 @@ namespace CatCommuter
             this.busStops = new HashSet<BusStop>();
             this.startTime = startTime;
         }
-
-    }
-    public class BusLineViewModel
-    {
-        private BusLine defaultBusLine = new BusLine("testLine", new TimeSpan(20), new DateTime());
-        public BusLine DefaultBusLine { get { return this.defaultBusLine; } }
+           public string getname()
+        {
+            return name;
+        }
     }
 }
