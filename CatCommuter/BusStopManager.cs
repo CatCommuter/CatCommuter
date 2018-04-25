@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 
 namespace CatCommuter
 {
@@ -31,17 +32,13 @@ namespace CatCommuter
             busStops.Add(new BusStop("Muir Pass", busLines, "the location"));
         }
 
-        public static BusStopManager Instance
+        public static BusStopManager getInstance()
         {
-            get
+            if (instance == null)
             {
-                if (instance == null)
-                {
-                    instance = new BusStopManager();
-
-                }
-                return instance;
+                instance = new BusStopManager();
             }
+            return instance;
         }
 
         public BusStop getBusStop(string location)
