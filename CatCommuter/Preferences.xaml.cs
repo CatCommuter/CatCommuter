@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Windows.UI.Core;
@@ -14,12 +14,14 @@ namespace CatCommuter
     /// </summary>
     public sealed partial class Preferences : Page
     {
-
-        IList<string> routeList = new List<string>();
-        BusStopManager bsManager;
+        
+        BusStopManager bsManager = BusStopManager.Instance;
+        ISet<BusLine> busLines;
+       
         public Preferences()
         {
             this.InitializeComponent();
+
             //Add a back button
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, a) =>
@@ -32,19 +34,20 @@ namespace CatCommuter
                 }
             };
 
-            bsManager = BusStopManager.Instance;
-            routeList.Add("This is a dynamic list");
-            routeList.Add("you can add more items");
-            route_ListView.ItemsSource = routeList;
+            
+            busLines = bsManager.getBusLines();
+            DataContext = busLines;
+
+            route_ListView.ItemsSource = busLines;
 
         }
-
+  
 
         private void AddItem_Click(object sender, RoutedEventArgs e)
         {
-            routeList.Add("You added an item!");
+            busLines.Add(new BusLine("TestLine", new TimeSpan(), new DateTime()));
             route_ListView.ItemsSource = null;
-            route_ListView.ItemsSource = routeList;
+            route_ListView.ItemsSource = busLines;
         }
 
 

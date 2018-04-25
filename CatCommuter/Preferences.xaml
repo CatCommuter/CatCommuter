@@ -16,7 +16,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <Grid>
-                                <TextBlock Text="{Binding}" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock Text="{Binding name}" VerticalAlignment="Center"/>
                             </Grid>
                             <Grid>
                                 <ToggleSwitch VerticalAlignment="Center" />

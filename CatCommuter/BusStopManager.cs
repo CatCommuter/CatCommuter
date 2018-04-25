@@ -11,7 +11,7 @@ namespace CatCommuter
         private static BusStopManager instance;
 
         ISet<BusStop> busStops = new HashSet<BusStop>();
-
+        ISet<BusLine> busLinesSet = new HashSet<BusLine>();
         private BusStopManager()
         {
             //Load from storage
@@ -27,6 +27,7 @@ namespace CatCommuter
             ISet<DateTime> times = new HashSet<DateTime>();
             times.Add(new DateTime());
             busLines.Add(sampleLine, times);
+            busLinesSet.Add(sampleLine);
             busStops.Add(new BusStop("Muir Pass", busLines, "the location"));
         }
 
@@ -65,6 +66,11 @@ namespace CatCommuter
         public IList<BusStop> getBusStops(string location, int maxDistanceInMiles)
         {
             return null;
+        }
+
+        public ISet<BusLine> getBusLines()
+        {
+            return busLinesSet;
         }
     }
 }
