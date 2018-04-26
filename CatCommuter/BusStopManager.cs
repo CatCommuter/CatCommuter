@@ -46,6 +46,11 @@ namespace CatCommuter
             return instance;
         }
 
+        /// <summary>
+        /// Finds and returns the closest BusStop near a given location.
+        /// </summary>
+        /// <param name="location">The location to search for a bus stop</param>
+        /// <returns>The BusStop closest to the given location</returns>
         public BusStop getBusStop(BasicGeoposition location)
         {
             BusStop closestStop = busStops.GetEnumerator().Current;
@@ -54,7 +59,6 @@ namespace CatCommuter
             foreach (BusStop busStop in busStops)
             {
                 double distance = this.distance(location, closestStop.location);
-                //Compare distance to closestStop
                 if (distance < closestDistance)
                 {
                     closestStop = busStop;
