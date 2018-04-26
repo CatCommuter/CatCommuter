@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Geolocation;
 
 namespace CatCommuter
 {
     class BusStop
     {
         public string name { get; }
-        public string location { get; } //TODO
+        public BasicGeoposition location { get; } //TODO
         IDictionary<BusLine, ISet<DateTime>> busLines { get; }
 
 
-        public BusStop(string name, IDictionary<BusLine, ISet<DateTime>> busLines, string location)
+        public BusStop(string name, IDictionary<BusLine, ISet<DateTime>> busLines, BasicGeoposition location)
         {
             this.name = name;
             this.busLines = busLines;
