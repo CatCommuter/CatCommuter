@@ -15,7 +15,7 @@ namespace CatCommuter
     public sealed partial class Preferences : Page
     {
         
-        BusStopManager bsManager = BusStopManager.Instance;
+        BusStopManager bsManager = BusStopManager.getInstance();
         ISet<BusLine> busLines;
        
         public Preferences()

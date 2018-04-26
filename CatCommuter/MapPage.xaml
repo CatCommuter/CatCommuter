@@ -34,7 +34,13 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Custom:MapControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CanDrag="True" MapServiceToken="grnmZzGPAQ9RwhLIn5Id~YbgDRxe0X8ZKRnr3AHxQVA~AkhogxQw41df_OUgph1EVfLCuBuDgxjrPxeqY0kmrG18pU_wZ02gn0H9LeoIqWaf"/>
-        <TextBox x:Name="MapSearchTextBox" HorizontalAlignment="Stretch" Margin="10,10,10,0" VerticalAlignment="Top" AcceptsReturn="True" InputScope="Maps" PlaceholderText="Search"/>
+        <TextBox x:Name="MapSearchTextBox" 
+                 HorizontalAlignment="Stretch" 
+                 Margin="10,10,10,0" 
+                 VerticalAlignment="Top" 
+                 AcceptsReturn="False" 
+                 InputScope="Maps" 
+                 PlaceholderText="Search"/>
 
     </Grid>
 </Page>
