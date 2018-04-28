@@ -15,8 +15,8 @@
                 <AppBarButton Icon="Setting"
                               Label="Preferences" 
                               Click="goPreferencesButton_Click"/>
-                <AppBarButton Icon="Setting"
-                              Label="GetBusStop" 
+                <AppBarButton Icon="MapPin"
+                              Label="Get closest stop" 
                               Click="ClosestStop_Click"/>
                 <AppBarButton Icon="Sync"
                               Label="Refresh" 
@@ -36,13 +36,18 @@
 
         <Custom:MapControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CanDrag="True" MapServiceToken="grnmZzGPAQ9RwhLIn5Id~YbgDRxe0X8ZKRnr3AHxQVA~AkhogxQw41df_OUgph1EVfLCuBuDgxjrPxeqY0kmrG18pU_wZ02gn0H9LeoIqWaf"/>
         <TextBox x:Name="MapSearchTextBox" 
-                 
+    
                  HorizontalAlignment="Stretch" 
                  Margin="10,10,10,0" 
                  VerticalAlignment="Top" 
                  AcceptsReturn="False" 
-                 InputScope="Maps" 
-                 PlaceholderText="Search"/>
+                 InputScope="Maps"
+                    >
+            <TextBox.Text>
+                <Binding Source="{Binding name}" Path="CatCommuter.MapPage"
+                   UpdateSourceTrigger="PropertyChanged"/>
+            </TextBox.Text>
+        </TextBox>
 
     </Grid>
 </Page>

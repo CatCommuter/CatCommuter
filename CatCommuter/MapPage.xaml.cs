@@ -22,11 +22,15 @@ namespace CatCommuter
     /// </summary>
     public sealed partial class MapPage : Page
     {
+        String name;
         BusStopManager bsManager;
         public MapPage()
         {
             this.InitializeComponent();
             bsManager = BusStopManager.getInstance();
+    
+            name = "Search";
+            MapSearchTextBox.Text = name;
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
@@ -42,9 +46,10 @@ namespace CatCommuter
             BasicGeoposition gp = new BasicGeoposition();
             gp.Latitude = -120.422649;
             gp.Longitude = 37.367428;
-            bsManager.getBusStop(gp);
+            //bsManager.getBusStop(gp).name;
 
-
+            name = bsManager.getBusStop(gp).name;
+            MapSearchTextBox.Text = name;
         }
 
 
