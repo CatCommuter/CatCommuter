@@ -35,6 +35,8 @@ namespace CatCommuter
                 Longitude = -120.426608
             };
             busStops.Add(new BusStop("Muir Pass", busLines, position));
+
+
         }
 
         public static BusStopManager getInstance()
