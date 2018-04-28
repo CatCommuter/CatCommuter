@@ -58,6 +58,8 @@ namespace CatCommuter
 
             foreach (BusStop busStop in busStops)
             {
+                if (closestStop == null)
+                    closestStop = busStop;
                 double distance = this.distance(location, closestStop.location);
                 if (distance < closestDistance)
                 {
