@@ -31,8 +31,8 @@ namespace CatCommuter
             busLinesSet.Add(sampleLine);
             BasicGeoposition position = new BasicGeoposition
             {
-                Latitude = 1D,
-                Longitude = 1D
+                Latitude = 37.365269,
+                Longitude = -120.426608
             };
             busStops.Add(new BusStop("Muir Pass", busLines, position));
         }

@@ -44,14 +44,23 @@ namespace CatCommuter
         private void ClosestStop_Click(object sender, RoutedEventArgs e)
         {
             BasicGeoposition gp = new BasicGeoposition();
-            gp.Latitude = -120.422649;
-            gp.Longitude = 37.367428;
+            gp.Longitude = 0.0;
+            gp.Latitude = 0.0;
+            gp.Altitude = 0.0;
             //bsManager.getBusStop(gp).name;
 
             name = bsManager.getBusStop(gp).name;
             MapSearchTextBox.Text = name;
+            BingMapsDialog(bsManager.getBusStop(gp).location, 15);
         }
 
+        public void BingMapsDialog(BasicGeoposition center, int zoom)
+        {
+            InitializeComponent();
+            Geopoint geopoint = new Geopoint(center);
+            Map.Center = geopoint;
+            Map.ZoomLevel = zoom;
+        }
 
     }
 }
