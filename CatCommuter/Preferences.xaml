@@ -16,7 +16,7 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <Grid>
-                                <TextBlock Text="{Binding name}" VerticalAlignment="Center"/>
+                                <Button Content="{Binding name}" VerticalAlignment="Center" Click="ViewSchedual"/>
                             </Grid>
                             <Grid>
                                 <ToggleSwitch VerticalAlignment="Center" />

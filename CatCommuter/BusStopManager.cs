@@ -13,6 +13,7 @@ namespace CatCommuter
 
         ISet<BusStop> busStops = new HashSet<BusStop>();
         ISet<BusLine> busLinesSet = new HashSet<BusLine>();
+        IDictionary<BusLine, ISet<DateTime>> busLines;
         private BusStopManager()
         {
             //Load from storage
@@ -20,11 +21,15 @@ namespace CatCommuter
             //Create BusLine objects
 
             BusLine sampleLine = new BusLine("C2", new TimeSpan(20), new DateTime());
-
+            BasicGeoposition sampleLocation = new BasicGeoposition();
+            sampleLocation.Longitude = 37.365693;
+            sampleLocation.Latitude = -120.427030;
+            BusStop sampleStop = new BusStop("Student Activities & Athletics Center", busLines, sampleLocation);
+            sampleLine.AddBusStop(sampleStop);
             //Create BusStop objects
                 //Store BusLine objects in stops as needed.
 
-            IDictionary<BusLine, ISet<DateTime>> busLines = new Dictionary<BusLine, ISet<DateTime>>();
+            busLines = new Dictionary<BusLine, ISet<DateTime>>();
             ISet<DateTime> times = new HashSet<DateTime>();
             times.Add(new DateTime());
             busLines.Add(sampleLine, times);

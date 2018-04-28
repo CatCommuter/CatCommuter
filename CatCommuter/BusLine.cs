@@ -20,5 +20,10 @@ namespace CatCommuter
             this.busStops = new HashSet<BusStop>();
             this.startTime = startTime;
         }
+
+        public void AddBusStop(BusStop busStop)
+        {
+            this.busStops.Add(busStop);
+        }
     }
 }

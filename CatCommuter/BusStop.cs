@@ -7,7 +7,7 @@ using Windows.Devices.Geolocation;
 
 namespace CatCommuter
 {
-    class BusStop
+    public class BusStop
     {
         public string name { get; }
         public BasicGeoposition location { get; } //TODO
