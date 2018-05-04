@@ -23,7 +23,7 @@ namespace CatCommuter {
 				Debug.WriteLine("Reading Bus Data From File \"" + filename + "\"");
 
 				//Read bus schedule data in from the .csv file
-				BusLine sampleLine = new BusLine("C2");
+				BusLine sampleLine = new BusLine("C2", new TimeSpan(), new DateTime());
 
 				StreamReader scheduleReader = new StreamReader(File.OpenRead(filename));
 				//using (StreamReader scheduleReader = new StreamReader(filename))
