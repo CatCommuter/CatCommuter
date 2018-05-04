@@ -41,10 +41,6 @@ namespace CatCommuter {
 							}
 
 							Debug.WriteLine("Is a time line!!!: " + lineStr);
-
-
-
-
 					}
 				//}
 				return sampleLine;

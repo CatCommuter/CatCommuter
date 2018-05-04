@@ -101,6 +101,7 @@
     <Compile Include="BusLine.cs" />
     <Compile Include="BusStop.cs" />
     <Compile Include="BusStopManager.cs" />
+    <Compile Include="DataReader.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
