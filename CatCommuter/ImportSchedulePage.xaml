@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="CatCommuter.ImportSchedulePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CatCommuter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <StackPanel>
+            <ScrollViewer>
+                <TextBlock x:Name="ConsoleTextBlock" 
+                           Text="''console'' output" MinHeight="100"
+                           />
+            </ScrollViewer>
+            <Button x:Name="InitializeButton"
+                    Content="Initialize default schedules"
+                    Click="InitializeButton_ClickAsync"/>
+            <Button x:Name="ImportButton"
+                    Content="Import" 
+                    Click="ImportButton_ClickAsync"
+                    />
+        </StackPanel>
+    </Grid>
+</Page>

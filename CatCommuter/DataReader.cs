@@ -52,9 +52,9 @@ namespace CatCommuter {
 			return null;
 		}
 
-		static void Main(string[] args)
-		{
-			ReadScheduleCSV("../CatCommuter/assets/C2_test.csv");
-		}
+		//static void Main(string[] args)
+		//{
+		//	ReadScheduleCSV("../CatCommuter/assets/C2_test.csv");
+		//}
 	}
 }

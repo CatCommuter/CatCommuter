@@ -102,6 +102,9 @@
     <Compile Include="BusStop.cs" />
     <Compile Include="BusStopManager.cs" />
     <Compile Include="DataReader.cs" />
+    <Compile Include="ImportSchedulePage.xaml.cs">
+      <DependentUpon>ImportSchedulePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -118,6 +121,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="C2_test.csv" />
     <None Include="CatCommuter_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +140,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="BlankPage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ImportSchedulePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

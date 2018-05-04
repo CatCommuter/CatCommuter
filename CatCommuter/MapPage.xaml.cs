@@ -61,5 +61,9 @@ namespace CatCommuter
             Map.ZoomLevel = zoom;
         }
 
+        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(ImportSchedulePage));
+        }
     }
 }

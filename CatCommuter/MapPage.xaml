@@ -27,6 +27,9 @@
             <CommandBar.SecondaryCommands>
                 <AppBarButton Icon="Help"
                               Label="About"/>
+                <AppBarButton Icon="Import"
+                              Label="Import"
+                              Click="AppBarButton_Click_1"/>
                 <AppBarButton Label="Force close app"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
