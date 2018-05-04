@@ -43,10 +43,9 @@ namespace CatCommuter
         }
         private void ClosestStop_Click(object sender, RoutedEventArgs e)
         {
-            BasicGeoposition gp = new BasicGeoposition();
-            gp.Longitude = 0.0;
-            gp.Latitude = 0.0;
-            gp.Altitude = 0.0;
+            BasicGeoposition gp = new BasicGeoposition(); //replace this with the current device location
+            gp.Longitude = -120.422507;
+            gp.Latitude = 37.367543;
             //bsManager.getBusStop(gp).name;
 
             name = bsManager.getBusStop(gp).name;
