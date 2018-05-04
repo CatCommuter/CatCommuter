@@ -10,33 +10,55 @@ using System.Text.RegularExpressions;
 //[STAThread]
 namespace CatCommuter {
 	public class DataReader {
-		//static void Main(string[] args)
-		static bool ReadScheduleCSV(string filename)
+		
+
+		// Takes in file name of the .csv with the bus schedule data of this line.
+		// Returns a BusLine object with that line's data
+		// Returns null if error
+		static BusLine ReadScheduleCSV(string filename)
 		{
-			Debug.WriteLine ("Reading Bus Data From File \"" + filename + "\"");
-
-			//Read bus schedule data in from the .csv file
-			BusLine sampleLine = new BusLine("C2", null, null);
-			using (StreamReader scheduleReader = new StreamReader (filename))
+			try
 			{
-				
-				while (!scheduleReader.EndOfStream) {
-					string lineStr = scheduleReader.ReadLine();
-                     
-                    // Skip over titles/empty lines at top of file that don't contain bus times
-                    Regex timeFormat = new Regex("[0-9]?[0-9]:[0-9][0-9]");
-					if (!timeFormat.IsMatch(lineStr)) {
-						continue;   // skip this line
+
+				Debug.WriteLine("Reading Bus Data From File \"" + filename + "\"");
+
+				//Read bus schedule data in from the .csv file
+				BusLine sampleLine = new BusLine("C2");
+
+				StreamReader scheduleReader = new StreamReader(File.OpenRead(filename));
+				//using (StreamReader scheduleReader = new StreamReader(filename))
+				//{
+
+					while (!scheduleReader.EndOfStream)
+						{
+							string lineStr = scheduleReader.ReadLine();
+
+							// Skip over titles/empty lines at top of file that don't contain bus times
+							Regex timeFormat = new Regex("[0-9]?[0-9]:[0-9][0-9]");
+							if (!timeFormat.IsMatch(lineStr))
+							{
+								continue;   // skip this line
+							}
+
+							Debug.WriteLine("Is a time line!!!: " + lineStr);
+
+
+
+
 					}
-
-                    Debug.WriteLine("Is a time line!!!: " + lineStr);
-
-
-                   
-
-				}
+				//}
+				return sampleLine;
 			}
-			return true;
+			catch (Exception e)
+			{
+				Debug.WriteLine("In ReadScheduleCSV, an error \"" + e + "\" occured!");
+			}
+			return null;
+		}
+
+		static void Main(string[] args)
+		{
+			ReadScheduleCSV("../CatCommuter/assets/C2_test.csv");
 		}
 	}
 }

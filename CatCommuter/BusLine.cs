@@ -14,7 +14,7 @@ namespace CatCommuter
         public TimeSpan timeSpan { get; }
         ISet<BusStop> busStops { get; set; }
 
-        public BusLine(string name, TimeSpan timeSpan, DateTime startTime)
+        public BusLine(string name = "anonymous bus", TimeSpan timeSpan = new TimeSpan(), DateTime startTime = new DateTime())
         {
             this.name = name;
             this.timeSpan = timeSpan;
