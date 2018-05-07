@@ -11,10 +11,11 @@ namespace CatCommuter
     {
         private static BusStopManager instance;
 
-        public ISet<BusStop> busStops = new HashSet<BusStop>();
+        public ISet<BusStop> busStops { get; }
         public IDictionary<BusLine, ISet<DateTime>> busLines = new Dictionary<BusLine, ISet<DateTime>>();
         private BusStopManager()
         {
+            busStops = new HashSet<BusStop>();
             //Load from storage
 
             //Create BusLine objects
