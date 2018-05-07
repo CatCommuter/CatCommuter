@@ -43,7 +43,12 @@ namespace CatCommuter
             Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
 
             if (file == null)
+            {
+                ConsoleTextBlock.Text = "No file selected";
                 return;
+            }
+
+            ReadScheduleCSVAsync(file);
         }
 
         private async void InitializeButton_ClickAsync(object sender, RoutedEventArgs e)

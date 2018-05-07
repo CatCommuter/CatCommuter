@@ -13,13 +13,14 @@
             <ScrollViewer>
                 <TextBlock x:Name="ConsoleTextBlock" 
                            Text="''console'' output" MinHeight="100"
+                           TextWrapping="Wrap"
                            />
             </ScrollViewer>
             <Button x:Name="InitializeButton"
                     Content="Initialize default schedules"
                     Click="InitializeButton_ClickAsync"/>
             <Button x:Name="ImportButton"
-                    Content="Import" 
+                    Content="Import"
                     Click="ImportButton_ClickAsync"
                     />
         </StackPanel>
