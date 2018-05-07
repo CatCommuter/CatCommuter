@@ -28,9 +28,6 @@ namespace CatCommuter
         {
             this.InitializeComponent();
             bsManager = BusStopManager.getInstance();
-    
-            name = "Search";
-            MapSearchTextBox.Text = name;
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
