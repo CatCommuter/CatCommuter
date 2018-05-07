@@ -25,6 +25,7 @@ namespace CatCommuter
                 //Store BusLine objects in stops as needed.
 
             ISet<DateTime> times = new HashSet<DateTime>();
+
             times.Add(new DateTime());
             busLines.Add(sampleLine, times);
             BasicGeoposition position = new BasicGeoposition

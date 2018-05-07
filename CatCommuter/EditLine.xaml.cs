@@ -25,6 +25,7 @@ namespace CatCommuter
     public sealed partial class EditLine : Page
     {
         BusLine busLineSelected;
+        BusStop sampleStop;
         public EditLine()
         {
             this.InitializeComponent();
@@ -33,6 +34,20 @@ namespace CatCommuter
             DataContext = busLineSelected;
             //System.Diagnostics.Debug.WriteLine("Size:" + busLineSelected.busStops.Count);
             stop_ListView.ItemsSource = busLineSelected.busStops;
+
+            DataContext = busLineSelected.busStops;
+
+
+            _parentItems = busLineSelected.busStops;
         }
+
+        private IList<BusStop> _parentItems;
+
+        public IList<BusStop> ParentItems
+        {
+            get { return _parentItems; }
+            set { _parentItems = value; }
+        }
+
     }
 }

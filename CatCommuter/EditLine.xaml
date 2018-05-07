@@ -10,15 +10,25 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListView>
             <TextBlock  Text="{Binding name}" />
-            <ListView x:Name="stop_ListView">
+
+
+            <ListView x:Name="stop_ListView" ItemsSource="{Binding busStops}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                             <TextBlock Text="{Binding name}"/>
+                            <ListView ItemsSource="{Binding times}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding TimeOfDay}"/>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
         </ListView>
 
     </Grid>

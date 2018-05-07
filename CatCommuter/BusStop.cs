@@ -12,13 +12,24 @@ namespace CatCommuter
         public string name { get; }
         public BasicGeoposition location { get; } //TODO
         IDictionary<BusLine, ISet<DateTime>> busLines { get; }
-
+        public ISet<DateTime> times
+        { get
+            {
+                ISet<DateTime> returnSet = null;
+                busLines.TryGetValue(Preferences.toEditBusLine, out returnSet);
+                return returnSet;
+            }
+        }
+        public IList<string> helloList { get; set; }
 
         public BusStop(string name, IDictionary<BusLine, ISet<DateTime>> busLines, BasicGeoposition location)
         {
             this.name = name;
             this.busLines = busLines;
             this.location = location;
+            helloList = new List<String>();
+            helloList.Add("7:00");
+            helloList.Add("8:00");
         }
 
         public ISet<DateTime> getTimes(BusLine busLine)
