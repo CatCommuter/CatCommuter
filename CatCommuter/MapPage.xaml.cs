@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Devices.Geolocation;
+using Windows.UI.Core;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace CatCommuter
@@ -28,6 +29,8 @@ namespace CatCommuter
         {
             this.InitializeComponent();
             bsManager = BusStopManager.getInstance();
+            //hide back button
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)

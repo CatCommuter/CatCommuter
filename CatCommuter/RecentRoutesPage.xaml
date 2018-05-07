@@ -7,6 +7,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Home"
+                              Label="Home" 
+                              Click="AppBarButton_Click"/>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     </Grid>
