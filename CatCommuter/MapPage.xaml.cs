@@ -58,14 +58,16 @@ namespace CatCommuter
                 };
 
                 LandMarks.Add(newBusStopPin);
+                Map.MapElements.Add(newBusStopPin);
             }
 
-            var LandMarksLayer = new MapElementsLayer
-            {
-                ZIndex = 1,
-                MapElements = LandMarks
-            };
-            Map.Layers.Add(LandMarksLayer);
+            //Only usable in Fall Creators update:
+            //var LandMarksLayer = new MapElementsLayer
+            //{
+            //    ZIndex = 1,
+            //    MapElements = LandMarks
+            //};
+            //Map.Layers.Add(LandMarksLayer);
 
         }
 
