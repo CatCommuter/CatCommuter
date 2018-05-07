@@ -20,7 +20,6 @@ namespace CatCommuter
                 return returnSet;
             }
         }
-        public IList<string> helloList { get; set; }
 
         public BusStop(string name, IDictionary<BusLine, ISet<DateTime>> busLines, BasicGeoposition location)
         {
@@ -30,9 +29,6 @@ namespace CatCommuter
             else
                 this.busLines = new Dictionary<BusLine, ISet<DateTime>>();
             this.location = location;
-            helloList = new List<String>();
-            helloList.Add("7:00");
-            helloList.Add("8:00");
         }
 
         public ISet<DateTime> getTimes(BusLine busLine)

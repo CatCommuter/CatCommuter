@@ -61,5 +61,24 @@ namespace CatCommuter
             set { _parentItems = value; }
         }
 
+        private void AddItem_Click(object sender, RoutedEventArgs e)
+        {
+            
+            BasicGeoposition position = new BasicGeoposition
+            {
+                Latitude = 37.363930,
+                Longitude = -120.430695
+
+            };
+            BusStop sampleStop = new BusStop("Emigrant Pass at Scholars Lane ", BusStopManager.getInstance().busLines, position);
+            BusStopManager.getInstance().busStops.Add(sampleStop);
+            busLineSelected.addStop(sampleStop);
+
+            stop_ListView.ItemsSource = null;
+            stop_ListView.ItemsSource = busLineSelected.busStops;
+            DataContext = busLineSelected.busStops;
+            _parentItems = busLineSelected.busStops;
+        }
+
     }
 }

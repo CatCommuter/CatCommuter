@@ -7,6 +7,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Maps;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
@@ -14,6 +15,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Devices.Geolocation;
 using Windows.UI.Core;
+
+
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace CatCommuter
@@ -25,22 +29,56 @@ namespace CatCommuter
     {
         String name;
         BusStopManager bsManager;
+
         public MapPage()
         {
             this.InitializeComponent();
             bsManager = BusStopManager.getInstance();
             //hide back button
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
+
+            AddPins();
+        }
+
+
+        private void AddPins()
+        {
+            var LandMarks = new List<MapElement>();
+
+            for (int i = 0; i < bsManager.busStops.Count; i++)
+            {
+                BusStop stop = bsManager.busStops.ElementAt<BusStop>(i);
+                var newBusStopPin = new MapIcon
+                {
+                    Location = new Geopoint(stop.location),
+                    NormalizedAnchorPoint = new Point(.5, 1.0),
+
+                    ZIndex = 0,
+                    Title = stop.name
+                };
+
+                LandMarks.Add(newBusStopPin);
+            }
+
+            var LandMarksLayer = new MapElementsLayer
+            {
+                ZIndex = 1,
+                MapElements = LandMarks
+            };
+            Map.Layers.Add(LandMarksLayer);
+
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
         private void goPreferencesButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Preferences));
         }
+
         private void ClosestStop_Click(object sender, RoutedEventArgs e)
         {
             BasicGeoposition gp = new BasicGeoposition(); //replace this with the current device location
@@ -70,5 +108,7 @@ namespace CatCommuter
         {
             Frame.Navigate(typeof(LoginPage));
         }
+
+
     }
 }

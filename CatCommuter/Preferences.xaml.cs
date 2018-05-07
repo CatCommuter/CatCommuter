@@ -52,10 +52,13 @@ namespace CatCommuter
             bsManager.busLines.Add(sampleLine, times);
             BasicGeoposition position = new BasicGeoposition
             {
-                Latitude = 37.365269,
-                Longitude = -120.426608
+                Latitude = 37.363255,
+                Longitude = -120.429427
+
             };
-            bsManager.busStops.Add(new BusStop("Some Pass", bsManager.busLines, position));
+            BusStop sampleStop = new BusStop("Mammoth Lakes Rd.", bsManager.busLines, position);
+            bsManager.busStops.Add(sampleStop);
+            sampleLine.addStop(sampleStop);
             ReloadBusLines();
         }
 
