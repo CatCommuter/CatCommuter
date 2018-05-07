@@ -25,7 +25,10 @@ namespace CatCommuter
         public BusStop(string name, IDictionary<BusLine, ISet<DateTime>> busLines, BasicGeoposition location)
         {
             this.name = name;
-            this.busLines = busLines;
+            if (busLines != null)
+                this.busLines = busLines;
+            else
+                this.busLines = new Dictionary<BusLine, ISet<DateTime>>();
             this.location = location;
             helloList = new List<String>();
             helloList.Add("7:00");

@@ -30,7 +30,9 @@
                 <AppBarButton Icon="Import"
                               Label="Import"
                               Click="AppBarButton_Click_1"/>
-                <AppBarButton Label="Force close app"/>
+                <AppBarButton Label="Recent Routes"
+                              Icon="Directions"
+                              Click="AppBarButton_Click_2"/>
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>

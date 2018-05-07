@@ -30,6 +30,18 @@ namespace CatCommuter
         {
             this.InitializeComponent();
 
+            //Add a back button
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += (s, a) =>
+            {
+                Debug.WriteLine("BackRequested");
+                if (Frame.CanGoBack)
+                {
+                    Frame.GoBack();
+                    a.Handled = true;
+                }
+            };
+
             busLineSelected = Preferences.toEditBusLine;
             DataContext = busLineSelected;
             //System.Diagnostics.Debug.WriteLine("Size:" + busLineSelected.busStops.Count);

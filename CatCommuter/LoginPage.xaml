@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="CatCommuter.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CatCommuter"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <CommandBar.PrimaryCommands>
+
+                <AppBarButton Icon="Accept"
+                              Label="Login"
+                              Click="AppBarButton_Click_Login"/>
+                <AppBarButton Icon="Rotate"
+                              Label="Bypass login"
+                              Click="AppBarButton_Click_Bypass"/>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0"
+                   Margin="20"
+                   Text="CatCommuter"
+                   TextWrapping="NoWrap"
+                   Style="{StaticResource HeaderTextBlockStyle}" />
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Margin="0,10,0,10" VerticalAlignment="Center">
+                <TextBox x:Name="username"
+                         Margin="20"
+                         PlaceholderText="Username"
+                         InputScope="Password"/>
+                <PasswordBox x:Name="password"
+                         Margin="20"
+                         PlaceholderText="Password"/>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</Page>
