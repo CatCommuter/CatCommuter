@@ -32,12 +32,18 @@ namespace CatCommuter
             };
         }
 
+        
         private async void ImportButton_ClickAsync(object sender, RoutedEventArgs e)
         {
-            var messageDialog = new MessageDialog("TODO: allow user to select csv file from their device.");
-            messageDialog.Commands.Add(new UICommand("Close"));
-            messageDialog.CancelCommandIndex = 0;
-            await messageDialog.ShowAsync();
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            //picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
+            picker.FileTypeFilter.Add(".csv");
+
+            Windows.Storage.StorageFile file = await picker.PickSingleFileAsync();
+
+            if (file == null)
+                return;
         }
 
         private async void InitializeButton_ClickAsync(object sender, RoutedEventArgs e)
