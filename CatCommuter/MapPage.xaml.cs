@@ -62,5 +62,10 @@ namespace CatCommuter
         {
             Frame.Navigate(typeof(ImportSchedulePage));
         }
+
+        private void AppBarButton_Click_2(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(LoginPage));
+        }
     }
 }
