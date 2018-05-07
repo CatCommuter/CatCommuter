@@ -12,7 +12,7 @@ namespace CatCommuter
         private static BusStopManager instance;
 
         public ISet<BusStop> busStops = new HashSet<BusStop>();
-        public IDictionary<BusLine, ISet<DateTime>> busLines;
+        public IDictionary<BusLine, ISet<DateTime>> busLines = new Dictionary<BusLine, ISet<DateTime>>();
         private BusStopManager()
         {
             //Load from storage
@@ -24,7 +24,6 @@ namespace CatCommuter
             //Create BusStop objects
                 //Store BusLine objects in stops as needed.
 
-            busLines = new Dictionary<BusLine, ISet<DateTime>>();
             ISet<DateTime> times = new HashSet<DateTime>();
             times.Add(new DateTime());
             busLines.Add(sampleLine, times);
@@ -33,8 +32,10 @@ namespace CatCommuter
                 Latitude = 37.365269,
                 Longitude = -120.426608
             };
-            busStops.Add(new BusStop("Muir Pass", busLines, position));
-
+            BusStop sampleStop = new BusStop("Muir Pass", busLines, position);
+            busStops.Add(sampleStop);
+            sampleLine.addStop(sampleStop);
+            System.Diagnostics.Debug.WriteLine("Size:" + sampleLine.busStops.Count);
 
         }
 

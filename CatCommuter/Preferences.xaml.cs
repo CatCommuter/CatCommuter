@@ -16,10 +16,11 @@ namespace CatCommuter
     /// </summary>
     public sealed partial class Preferences : Page
     {
-        
+
         BusStopManager bsManager = BusStopManager.getInstance();
-        ISet<BusLine> busLinesSet;
-       
+        ISet<BusLine> busLinesSet = new HashSet<BusLine>();
+        public static BusLine toEditBusLine { set; get; }
+
         public Preferences()
         {
             this.InitializeComponent();
@@ -41,7 +42,7 @@ namespace CatCommuter
             route_ListView.ItemsSource = busLinesSet;
             ReloadBusLines();
         }
-  
+
 
         private void AddItem_Click(object sender, RoutedEventArgs e)
         {
@@ -60,21 +61,28 @@ namespace CatCommuter
 
         private void ReloadBusLines()
         {
-            ISet<BusLine> busLinesSet = new HashSet< BusLine > ();
+;
             ICollection<BusLine> co = bsManager.busLines.Keys;
 
             List<BusLine> bs = bsManager.busLines.Keys.ToList();
 
-            for(int i = 0; i < bs.Count; i++)
+            for (int i = 0; i < bs.Count; i++)
             {
                 busLinesSet.Add(bs[i]);
+
             }
 
             route_ListView.ItemsSource = null;
             route_ListView.ItemsSource = busLinesSet;
         }
 
-
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button _button = (Button)sender;
+            toEditBusLine = _button.DataContext as BusLine;
+            Frame.Navigate(typeof(EditLine));
+            
+        }
 
         private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {

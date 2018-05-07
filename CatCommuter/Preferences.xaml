@@ -9,18 +9,13 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListView>
-            <TextBlock HorizontalAlignment="Left" Text="Preferences" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock  Text="Preferences" />
             
-            <ListView x:Name="route_ListView">
+            <ListView x:Name="route_ListView" HorizontalAlignment="Center" Margin="10,10,10,10">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Grid>
-                                <TextBlock Text="{Binding name}" VerticalAlignment="Center"/>
-                            </Grid>
-                            <Grid>
-                                <ToggleSwitch VerticalAlignment="Center" />
-                            </Grid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Content="{Binding name}" Click="Button_Click" HorizontalAlignment="Center"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

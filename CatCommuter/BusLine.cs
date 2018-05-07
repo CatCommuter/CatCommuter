@@ -12,7 +12,7 @@ namespace CatCommuter
         public string name { get; set; }
         public DateTime startTime { get; } //date and time of current startTime for this week
         public TimeSpan timeSpan { get; }
-        ISet<BusStop> busStops { get; set; }
+        public ISet<BusStop> busStops { get; set; }
 
         public BusLine(string name, TimeSpan timeSpan, DateTime startTime)
         {
@@ -20,6 +20,11 @@ namespace CatCommuter
             this.timeSpan = timeSpan;
             this.busStops = new HashSet<BusStop>();
             this.startTime = startTime;
+        }
+
+        public void addStop(BusStop busStop)
+        {
+            busStops.Add(busStop);
         }
     }
 }
