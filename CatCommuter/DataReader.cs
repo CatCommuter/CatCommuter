@@ -72,7 +72,7 @@ namespace CatCommuter
                     }
 
                     //busStops.Add(new BusStop(stopName, ));
-                    BusStop currentStop = new BusStop(stopName, stopPosition);
+                    BusStop currentStop = new BusStop(stopName, null, stopPosition);
                     BusStopManager.getInstance().busStops.Add(currentStop);
                     // Create the bus stop
                     //BusStop currentStop = new BusStop();
