@@ -20,11 +20,11 @@ namespace CatCommuter
         // Takes in file name of the .csv with the bus schedule data of this line.
         // Returns a BusLine object with that line's data
         // Returns null if error
-        static async System.Threading.Tasks.Task<IDictionary<string, IList<string>>> ReadScheduleCSVAsync(StorageFile file)
+        public static async System.Threading.Tasks.Task<IDictionary<string, IList<string>>> ReadScheduleCSVAsync(StorageFile file)
         {
             try
             {
-                IDictionary<String, IList<String>> busStopTimes = new Dictionary<String, IList<String>>();
+                IDictionary<string, IList<string>> busStopTimes = new Dictionary<string, IList<string>>();
                 Debug.WriteLine("Reading Bus Data From File \"" + file.Path + "\"");
 
                 //Read bus schedule data in from the .csv file
