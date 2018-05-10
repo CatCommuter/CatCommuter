@@ -19,10 +19,11 @@ namespace CatCommuter
         // Takes in file name of the .csv with the bus schedule data of this line.
         // Returns a BusLine object with that line's data
         // Returns null if error
-        static BusLine ReadScheduleCSV(string filename)
+        static IDictionary<String, IList<String>> ReadScheduleCSV(string filename)
         {
             try
             {
+                IDictionary<String, IList<String>> busStopTimes = new Dictionary<String, IList<String>>();
 
                 Debug.WriteLine("Reading Bus Data From File \"" + filename + "\"");
 
@@ -59,31 +60,17 @@ namespace CatCommuter
 
                     // Get the name of the stop
                     string stopName = Regex.Match(lineStr, @"^.*?(?=[0-9]?[0-9]:[0-9][0-9])").Value;
-                    //string stopName = lineStr.Substring(0, lineStr.IndexOf())
-                    //string[] rowItems = lineStr.Split(',');
 
-                    BasicGeoposition stopPosition = new BasicGeoposition();
-                    stopPosition.Latitude = 37.365269;
-                    stopPosition.Longitude = -120.426608;
+                    IList<String> times = new List<String>();
 
                     foreach (string cellItem in lineStr.Split())
                     {
-
+                        times.Add(cellItem);
                     }
 
-                    //busStops.Add(new BusStop(stopName, ));
-                    BusStop currentStop = new BusStop(stopName, null, stopPosition);
-                    BusStopManager.getInstance().busStops.Add(currentStop);
-                    // Create the bus stop
-                    //BusStop currentStop = new BusStop();
-
-                    // Read in the times into the stop
-
+                    busStopTimes.Add(stopName, times);
                 }
-                //}
-
-                BusLine sampleLine = new BusLine(filename, timeSpan, busStartTime);
-                return sampleLine;
+                return busStopTimes;
             }
             catch (Exception e)
             {
