@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Devices.Geolocation;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 
 
 
@@ -111,6 +112,40 @@ namespace CatCommuter
             Frame.Navigate(typeof(LoginPage));
         }
 
+        private async void MapSearchTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter /*|| search button is pressed*/)
+            {
+                // if Enter key is pressed
+                // read text in the box and
+                string dest = MapSearchTextBox.Text;
+                dest = dest.ToLower();
+                BusStopManager busStopManager = BusStopManager.getInstance();
 
+                foreach (BusStop stop in busStopManager.busStops)
+                {
+                    if (stop.name.ToLower().Equals(dest))
+                    {
+                        BingMapsDialog(stop.location, 15);
+                        return;
+                    }
+            
+                }
+
+                var messageDialog = new MessageDialog("No bus stop detected.");
+                messageDialog.Commands.Add(new UICommand("Close"));
+                messageDialog.CancelCommandIndex = 0;
+                await messageDialog.ShowAsync();
+
+                // compare to names of stops
+                // by looping through BusStops collection in BusStopManager
+                // whichever one is the closest (maybe by string compare functions?)
+                // map will center onto that stop (probably by lat/long coordinates)
+
+
+                // look at partial search i.e., "Muir" gives you "Muir Pass"
+                // could also look at suggestions drop box 
+            }
+        }
     }
 }

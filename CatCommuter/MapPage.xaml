@@ -53,6 +53,7 @@
                  AcceptsReturn="False" 
                  InputScope="Maps"
                  PlaceholderText="Search"
+                 KeyDown="MapSearchTextBox_KeyDown"
                     >
             <TextBox.Text>
                 <Binding Source="{Binding name}" Path="CatCommuter.MapPage"
