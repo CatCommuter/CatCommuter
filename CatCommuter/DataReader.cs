@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
+using Windows.Storage;
 
 //static int /// <summary>
 ///   The main entry point for the application
@@ -19,31 +20,17 @@ namespace CatCommuter
         // Takes in file name of the .csv with the bus schedule data of this line.
         // Returns a BusLine object with that line's data
         // Returns null if error
-        static IDictionary<String, IList<String>> ReadScheduleCSV(string filename)
+        static async System.Threading.Tasks.Task<IDictionary<string, IList<string>>> ReadScheduleCSVAsync(StorageFile file)
         {
             try
             {
                 IDictionary<String, IList<String>> busStopTimes = new Dictionary<String, IList<String>>();
-
-                Debug.WriteLine("Reading Bus Data From File \"" + filename + "\"");
-
-                // Parameters to create BusLine object
-
-                string busName = filename;
-                DateTime busStartTime = new DateTime();
-                TimeSpan timeSpan = new TimeSpan();
-
-
-                //List<BusStop> busStops = new List<BusStop>();
-
+                Debug.WriteLine("Reading Bus Data From File \"" + file.Path + "\"");
 
                 //Read bus schedule data in from the .csv file
-                StreamReader scheduleReader = new StreamReader(File.OpenRead(filename));
-                //using (StreamReader scheduleReader = new StreamReader(filename))
-                //{
-
-
-
+                var stream = await file.OpenStreamForReadAsync();
+                StreamReader scheduleReader = new StreamReader(stream);
+                
                 // Each line in file should have times for a new stop
                 while (!scheduleReader.EndOfStream)
                 {
