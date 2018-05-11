@@ -199,6 +199,9 @@ namespace CatCommuter
 =======
                         
                     Debug.WriteLine("Dice coefficient of " + BSD.stop.name + " is = " + BSD.dice + ".");
+<<<<<<< HEAD
+>>>>>>> f4fbd088e830974427676a7e59cfc65267bc7470
+=======
 >>>>>>> f4fbd088e830974427676a7e59cfc65267bc7470
 
                     if (stop.name.ToLower().Equals(dest))
