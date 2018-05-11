@@ -16,7 +16,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                            <TextBlock Text="{Binding name}"/>
+                            <Button Content="{Binding name}" Click="EditBusStop_Click"/>
                             <ListView ItemsSource="{Binding times}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -30,6 +30,10 @@
             </ListView>
             
             <Button x:Name="AddItem" Content="Add Item" Click="AddItem_Click"/>
+            <Button x:Name="AddStop" Content="Add Stop" Click="CreateBusStop_Click"/>
+ 
+              
+
         </ListView>
 
     </Grid>
