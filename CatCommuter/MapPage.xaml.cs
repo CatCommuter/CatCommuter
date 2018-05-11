@@ -51,12 +51,19 @@ namespace CatCommuter
         {
             Geolocator geolocator = new Geolocator();
             geolocator.DesiredAccuracy = PositionAccuracy.Default;
-            Geoposition position = await geolocator.GetGeopositionAsync();
-            BasicGeoposition basicGeoposition = new BasicGeoposition
+            BasicGeoposition basicGeoposition = new BasicGeoposition();
+            if (await Geolocator.RequestAccessAsync() == GeolocationAccessStatus.Allowed)
             {
-                Latitude = position.Coordinate.Point.Position.Latitude,
-                Longitude = position.Coordinate.Point.Position.Longitude
-            };
+                Geoposition position = await geolocator.GetGeopositionAsync(new TimeSpan(1, 0, 0), new TimeSpan(0, 0, 30));
+                basicGeoposition.Latitude = position.Coordinate.Point.Position.Latitude;
+                basicGeoposition.Longitude = position.Coordinate.Point.Position.Longitude;
+            }
+            else
+            {
+                basicGeoposition.Latitude = 37.367543;
+                basicGeoposition.Longitude = -120.422507;
+            }
+                
             var newBusStopPin = new MapIcon
             {
                 Location = new Geopoint(basicGeoposition),
@@ -151,7 +158,8 @@ namespace CatCommuter
             Debug.WriteLine(e.Key);
 
             double currentHigh = 0.0;
-            BasicGeoposition location;
+            BasicGeoposition location = new BasicGeoposition();
+            //int i = 0;
 
             if (e.Key == Windows.System.VirtualKey.Enter /*|| search button is pressed*/)
             {
@@ -180,11 +188,18 @@ namespace CatCommuter
                      **************/
 
                     BusStopDice BSD = new BusStopDice(stop, diceCoefficient(dest, stop));
+<<<<<<< HEAD
+                    
+                    //var messageDialog1 = new MessageDialog("Dice coefficient of " + BSD.stop.name + " is = " + BSD.dice + ".");
+                    //Debug.WriteLine(i);
+                    //i++;
+                    //messageDialog1.Commands.Add(new UICommand("Close"));
+                    //messageDialog1.CancelCommandIndex = 0;
+                    //await messageDialog1.ShowAsync();
+=======
                         
-                    var messageDialog1 = new MessageDialog("Dice coefficient of " + BSD.stop.name + " is = " + BSD.dice + ".");
-                    messageDialog1.Commands.Add(new UICommand("Close"));
-                    messageDialog1.CancelCommandIndex = 0;
-                    await messageDialog1.ShowAsync();
+                    Debug.WriteLine("Dice coefficient of " + BSD.stop.name + " is = " + BSD.dice + ".");
+>>>>>>> f4fbd088e830974427676a7e59cfc65267bc7470
 
                     if (stop.name.ToLower().Equals(dest))
                     {
@@ -193,8 +208,6 @@ namespace CatCommuter
                         // exact match of dest and stop.name
                         // map will center onto that stop (probably by lat/long coordinates)
                     }
-
-
 
                     if (currentHigh < BSD.dice)
                     {
@@ -205,13 +218,13 @@ namespace CatCommuter
                 }
                 // end foreach loop
                 
-                /*if (currentHigh > 0.5)
+                if (currentHigh > 0.5)
                 {
                     CenterMap(location, 15);
                     return;
-                }*/
+                }
 
-                var messageDialog = new MessageDialog("No bus stop detected.");
+                var messageDialog = new MessageDialog("No bus stop matches that name.");
                 messageDialog.Commands.Add(new UICommand("Close"));
                 messageDialog.CancelCommandIndex = 0;
                 await messageDialog.ShowAsync();
