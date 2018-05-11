@@ -188,10 +188,7 @@ namespace CatCommuter
 
                     BusStopDice BSD = new BusStopDice(stop, diceCoefficient(dest, stop));
                         
-                    var messageDialog1 = new MessageDialog("Dice coefficient of " + BSD.stop.name + " is = " + BSD.dice + ".");
-                    messageDialog1.Commands.Add(new UICommand("Close"));
-                    messageDialog1.CancelCommandIndex = 0;
-                    await messageDialog1.ShowAsync();
+                    Debug.WriteLine("Dice coefficient of " + BSD.stop.name + " is = " + BSD.dice + ".");
 
                     if (stop.name.ToLower().Equals(dest))
                     {
@@ -218,7 +215,7 @@ namespace CatCommuter
                     return;
                 }*/
 
-                var messageDialog = new MessageDialog("No bus stop detected.");
+                var messageDialog = new MessageDialog("No bus stop matches that name.");
                 messageDialog.Commands.Add(new UICommand("Close"));
                 messageDialog.CancelCommandIndex = 0;
                 await messageDialog.ShowAsync();
