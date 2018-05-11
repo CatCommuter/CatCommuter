@@ -112,9 +112,11 @@ namespace CatCommuter
 
         private void ClosestStop_Click(object sender, RoutedEventArgs e)
         {
-            BasicGeoposition gp = new BasicGeoposition(); //replace this with the current device location
-            gp.Longitude = -120.422507;
-            gp.Latitude = 37.367543;
+            BasicGeoposition gp = new BasicGeoposition
+            {
+                Latitude = Map.Center.Position.Latitude,
+                Longitude = Map.Center.Position.Longitude
+            }; //replace this with the current device location
             //bsManager.getBusStop(gp).name;
 
             name = bsManager.getBusStop(gp).name;
