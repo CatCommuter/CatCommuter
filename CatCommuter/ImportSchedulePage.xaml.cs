@@ -54,7 +54,9 @@ namespace CatCommuter
 
             IDictionary<string, IList<string>> rawData = await DataReader.ReadScheduleCSVAsync(file);
             ConsoleTextBlock.Text = "Imported the following stops: ";
-            
+            BusLine busLine = new BusLine(file.Name, new TimeSpan(), new DateTime(2018, 5, 11, 6, 11, 0));
+            ISet<DateTime> times = new HashSet<DateTime>();
+
             foreach (string stop in rawData.Keys)
             {
                 ConsoleTextBlock.Text += stop;
@@ -63,10 +65,11 @@ namespace CatCommuter
                     Latitude = GetRandomNumber(37.304328, 37.350193),
                     Longitude = GetRandomNumber(-120.494791, -120.444666)
                 };
-                Debug.WriteLine(position.Longitude);
                 BusStop busStop = new BusStop(stop, null, position);
                 BusStopManager.getInstance().busStops.Add(busStop);
+                busLine.addStop(busStop);
             }
+            BusStopManager.getInstance().busLines[busLine] = new HashSet<DateTime>();
         }
 
         public double GetRandomNumber(double minimum, double maximum)
@@ -80,6 +83,7 @@ namespace CatCommuter
             IDictionary<string, IList<string>> rawData = await DataReader.ReadScheduleCSVAsync(file);
             ConsoleTextBlock.Text = "Imported the following stops: ";
 
+            BusLine busLine = new BusLine(file.Name, new TimeSpan(), new DateTime(2018, 5, 11, 6, 11, 0));
             foreach (string stop in rawData.Keys)
             {
                 ConsoleTextBlock.Text += stop;
@@ -88,10 +92,12 @@ namespace CatCommuter
                     Latitude = GetRandomNumber(37.304328, 37.350193),
                     Longitude = GetRandomNumber(-120.494791, -120.444666)
                 };
-                Debug.WriteLine(position.Longitude);
-                BusStop busStop = new BusStop(stop, null, position);
+                //TODO: times
+                BusStop busStop = new BusStop(stop, , position);
                 BusStopManager.getInstance().busStops.Add(busStop);
+                busLine.addStop(busStop);
             }
+            BusStopManager.getInstance().busLines[busLine] = new HashSet<DateTime>();            
         }
     }
 }

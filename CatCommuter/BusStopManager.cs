@@ -13,6 +13,7 @@ namespace CatCommuter
         private static BusStopManager instance;
 
         public ISet<BusStop> busStops { get; }
+        //TODO: convert to a set
         public IDictionary<BusLine, ISet<DateTime>> busLines = new Dictionary<BusLine, ISet<DateTime>>();
         private BusStopManager()
         {

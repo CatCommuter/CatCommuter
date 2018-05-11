@@ -159,16 +159,13 @@ namespace CatCommuter
 
             double currentHigh = 0.0;
             BasicGeoposition location = new BasicGeoposition();
+            string dest = MapSearchTextBox.Text;
+            BusStopManager busStopManager = BusStopManager.getInstance();
 
             if (e.Key == Windows.System.VirtualKey.Enter /*|| search button is pressed*/)
             {
                 // if Enter key is pressed
-                // read text in the box and
-                string dest = MapSearchTextBox.Text;
-                dest = dest.ToLower();
-                BusStopManager busStopManager = BusStopManager.getInstance();
-
-                // compare to names of stops
+                // read text in the box and compare to names of stops
                 // by looping through BusStops collection in BusStopManager
 
                 foreach (BusStop stop in busStopManager.busStops)
@@ -222,10 +219,16 @@ namespace CatCommuter
 
 
             }
+            else
+            {
+                //Display suggestions
+
+            }
         }
 
         public double diceCoefficient(string dest, BusStop busstop)
         {
+            dest = dest.ToLower();
             string stop = busstop.name.ToLower();
             HashSet<string> setA = new HashSet<string>();
             HashSet<string> setB = new HashSet<string>();

@@ -64,15 +64,12 @@ namespace CatCommuter
 
         private void ReloadBusLines()
         {
-;
-            ICollection<BusLine> co = bsManager.busLines.Keys;
-
             List<BusLine> bs = bsManager.busLines.Keys.ToList();
 
             for (int i = 0; i < bs.Count; i++)
             {
                 busLinesSet.Add(bs[i]);
-
+                Debug.WriteLine("Added line to viewSet: " + bs[i].name);
             }
 
             route_ListView.ItemsSource = null;
