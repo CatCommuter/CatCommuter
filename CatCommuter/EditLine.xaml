@@ -16,7 +16,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                            <TextBlock Text="{Binding name}"/>
+                            <Button Content="{Binding name}" Click="ShowPopupOffsetClicked"/>
                             <ListView ItemsSource="{Binding times}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -30,7 +30,26 @@
             </ListView>
             
             <Button x:Name="AddItem" Content="Add Item" Click="AddItem_Click"/>
+            <Button x:Name="AddStop" Content="Add Stop" Click="CreateBusStop_Click"/>
+ 
+              
+
         </ListView>
+
+        <Popup  VerticalOffset="10" HorizontalOffset="200" x:Name="StandardPopup">
+
+            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                BorderThickness="2" Width="300" Height="400">
+                <ListView ItemsSource="{Binding toEditBusStop}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Border>
+        </Popup>
 
     </Grid>
 </Page>

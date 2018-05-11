@@ -26,6 +26,9 @@ namespace CatCommuter
     {
         BusLine busLineSelected;
         BusStop sampleStop;
+        BusStopManager bsManager = BusStopManager.getInstance();
+        public static BusStop toEditBusStop { get; set; }
+
         public EditLine()
         {
             this.InitializeComponent();
@@ -70,14 +73,44 @@ namespace CatCommuter
                 Longitude = -120.430695
 
             };
-            BusStop sampleStop = new BusStop("Emigrant Pass at Scholars Lane ", BusStopManager.getInstance().busLines, position);
-            BusStopManager.getInstance().busStops.Add(sampleStop);
-            busLineSelected.addStop(sampleStop);
-
+            //BusStop sampleStop = new BusStop("Emigrant Pass at Scholars Lane ", bsManager.busLines, position);
+            //bsManager.busStops.Add(sampleStop);
+            //busLineSelected.addStop(sampleStop);
+            bsManager.addBusStop("Em Pass", position, busLineSelected);
             stop_ListView.ItemsSource = null;
             stop_ListView.ItemsSource = busLineSelected.busStops;
             DataContext = busLineSelected.busStops;
             _parentItems = busLineSelected.busStops;
+
+            Button _button = (Button)sender;
+            toEditBusStop = _button.DataContext as BusStop;
+            Frame.Navigate(typeof(EditStop));
+        }
+
+        private void CreateBusStop_Click(object sender, RoutedEventArgs e)
+        {
+            toEditBusStop = null;
+            Frame.Navigate(typeof(EditStop));
+        }
+
+        // Handles the Click event on the Button on the page and opens the Popup. 
+        private void ShowPopupOffsetClicked(object sender, RoutedEventArgs e)
+        {
+            // open the Popup if it isn't open already 
+            //if (toEditBusStop == null)
+            //    toEditBusStop = new BusStop()
+            Button _button = (Button)sender;
+            toEditBusStop = _button.DataContext as BusStop;
+            if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+        }
+
+        // Handles the Click event on the Button inside the Popup control and 
+        // closes the Popup. 
+        private void ClosePopupClicked(object sender, RoutedEventArgs e)
+        {
+            // if the Popup is open, then close it 
+            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
+            toEditBusStop = null;
         }
 
     }

@@ -109,5 +109,12 @@ namespace CatCommuter
                 return num5;
             }
         }
+
+        public void addBusStop(string name, BasicGeoposition position, BusLine busLine)
+        {
+            BusStop newBusStop = new BusStop(name, busLines, position);
+            busStops.Add(newBusStop);
+            busLine.addStop(newBusStop);
+        }
     }
 }
