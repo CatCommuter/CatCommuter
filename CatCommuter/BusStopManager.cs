@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,14 +58,15 @@ namespace CatCommuter
         /// <returns>The BusStop closest to the given location</returns>
         public BusStop getBusStop(BasicGeoposition location)
         {
-            BusStop closestStop = busStops.GetEnumerator().Current;
+            BusStop closestStop = null;
             double closestDistance = Double.MaxValue;
 
             foreach (BusStop busStop in busStops)
             {
                 if (closestStop == null)
                     closestStop = busStop;
-                double distance = this.distance(location, closestStop.location);
+                double distance = this.distance(location, busStop.location);
+                Debug.WriteLine(distance + busStop.name);
                 if (distance < closestDistance)
                 {
                     closestStop = busStop;
