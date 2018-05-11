@@ -1,0 +1,287 @@
+[	//descriptions for each stop on each route
+	
+	[
+		//AB
+		"Muir Pass (Student Activities and Athletics Center) ",
+		
+		"Emigrant Pass at Scholars Lane ",
+		
+		"Castle Air Park ",
+		
+		"Merced College<i>The Bus Terminal ",
+		
+		"Mammoth Lakes Rd "
+	],
+	[
+		//C1
+		"Granville Luxury Apartments ",
+		
+		"Walmart on Loughborough across \"Pier One\" ",
+		
+		"Meadows Ave & Olivewood Dr. (Food Maxx) ",
+		
+		"Swiss Colony Apts. ",
+		
+		"Alexander & \"G\" Street (bus stop on \"G\") ",
+		
+		"Rite Aid/Walgreens ",
+		
+		"El Portal Plaza & \"G\" Street (bus stop on \"G\") ",
+		
+		"Mercy Hospital/Tri-College ",
+		
+		"Bellevue Ranch on Arrow Wood Dr ",
+		
+		"Mammoth Lakes Rd. ",
+		
+		"Muir Pass (Student Activities and Athletics Center) ",
+		
+		"Emigrant Pass at Scholars Lane ",
+		
+		"Tri-College/Mercy (G St.. 2nd light pole after Mercy) ",
+		
+		"El Portal Plaza & \"G\" Street (bus stop on \"G\") ",
+		
+		"Merced Sun-Star/Staples (Sun Star Sign) ",
+		
+		"Swiss Colony /College Green on Park @ 3040 Park Ave ",
+		
+		"Meadows Ave & Olivewood Dr. (Food Maxx) ",
+		
+		"Walmart on Loughborough at \"Pier One\" bus stop "
+	],
+	[
+		//C2
+		"\"R\" Street Village Apts. ",
+		
+		"El Redondo @ corner of Jenner before traffic circle ",
+		
+		"Buena Vista ",
+		
+		"Merced Mall Target ",
+		
+		"Villages Apts. \"M\" Street ",
+		
+		"Merced College <i>The Bus terminal ",
+		
+		"Ironstone Dr. ",
+		
+		"Bellevue Ranch on Arrow Wood Dr. ",
+		
+		"Mammoth Lakes Rd. ",
+		
+		"Muir Pass (Student Activities and Athletics Center) ",
+		
+		"Emigrant Pass at Scholars Lane "
+	],
+	[
+		//FastCat
+		"Moraga Subdivision ",
+		
+		"Yosemite Church",
+		
+		"University Surgery Center ",
+		
+		"Starbucks/Promenade Center ",
+		
+		"Mercy Hospital/Tri-College ",
+		
+		"Bellevue Ranch on Arrow Wood Dr. ",
+		
+		"Mammoth Lakes Rd. ",
+		
+		"Muir Pass (Student Activities and Athletics Center) ",
+		
+		"Emigrant Pass at Scholars Lane ",
+		
+		"Bellevue Ranch on Arrow Wood Dr. ",
+		
+		"Tri-College/Mercy Hospital ",
+		
+		"In-Shape ",
+		
+		"University Surgery Center ",
+		
+		"Yosemite Church ",
+		
+		"Moraga Subdivision ",
+		
+		"Mammoth Lakes Rd ",
+		
+		"Muir Pass (Student Activities and Athletics Center) ",
+		
+		"Emigrant Pass at Scholars Lane "
+	],
+	[
+		//NiteCat
+		"Mammoth Lakes Rd. ",
+		
+		"Muir Pass (Student Activities and Athletics Center) ",
+		
+		"Emigrant Pass at Scholars Lane ",
+		
+		"\"R\" Street Village Apartments ",
+		
+		"Merced Mall Theater ",
+		
+		"Applebee's ",
+		
+		"Hollywood Theatres Mainplace ",
+		
+		"Rite Aid/Walgreens on \"G\" St. ",
+		
+		"El Portal Plaza & \"G\" Street (bus stop on \"G\") "
+	],
+	[
+		//E
+		"Mammoth Lakes Rd. ",
+		
+		"Muir Pass (Student Activities and Athletics Center) ",
+		
+		"Emigrant Pass at Scholars Lane ",
+		
+		"Moraga Subdivision ",
+		
+		"Yosemite Church ",
+		
+		"Starbucks/Promenade Center ",
+		
+		"Merced College <i>The Bus Terminal ",
+		
+		"Ironstone Dr. ",
+		
+		"Cardella & \"M\" Street ",
+		
+		"Bellevue Ranch on Arrow Wood Dr. ",
+		
+		"\"R\" Street Apts ",
+		
+		"El Redondo Dr. ",
+		
+		"Buena Vista ",
+		
+		"Merced Mall Target ",
+		
+		"Village Apts. \"M\" St. ",
+		
+		"Merced Mall Theatre ",
+		
+		"Amtrak Station ",
+		
+		"Hollywood Theatres Mainplace ",
+		
+		"Granville Luxury Apts. ",
+		
+		"Meadows Ave & Olivewood Dr. (Food Maxx) ",
+		
+		"Rite Aid/Walgreens on G St. ",
+		
+		"In-Shape ",
+		
+		"McKee Rd. \"Yosemite Church\" ",
+		
+		"Moraga Subdivision "],
+	[
+		//E1
+		"Mammoth Lakes Rd. ",
+		
+		"Muir Pass (Student Activities and Athletics Center) ",
+		
+		"Emigrant Pass at Scholars Lane ",
+		
+		"Moraga Subdivision ",
+		
+		"Yosemite Church ",
+		
+		"Starbucks/Promenade Center ",
+		
+		"Merced College <i>The Bus Terminal ",
+		
+		"Merced Mall Target ",
+		
+		"Merced Mall Theatre ",
+		
+		"Amtrak Station ",
+		
+		"Hollywood Theatres Mainplace ",
+		
+		"Granville Luxury Apts. ",
+		
+		"Walmart on Loughborough across from \"Pier One\" ",
+		
+		"Meadows Ave & Olivewood Dr. (Food Maxx) ",
+		
+		"Rite Aid/Walgreens on \"G\" St. ",
+		
+		"In-Shape ",
+		
+		"McKee Rd. \"Yosemite Church\" ",
+		
+		"Moraga Subdivision "
+	],
+	[
+		//E2
+		"Mammoth Lakes Rd. ",
+		
+		"Muir Pass (Student Activities and Athletics Center) ",
+		
+		"Emigrant Pass at Scholars Lane ",
+		
+		"Moraga Subdivision ",
+		
+		"McKee Rd. \"Yosemite Church\" ",
+		
+		"Starbucks/Promenade Center ",
+		
+		"\"R\" Street Village Apts. ",
+		
+		"El Redondo @ corner of Jenner before traffic circle ",
+		
+		"Buena Vista ",
+		
+		"Merced Mall Target ",
+		
+		"Village Apts. \"M\" St. ",
+		
+		"Merced Colllege <i>The Bus terminal ",
+		
+		"Ironstone Dr. ",
+		
+		"Bellevue Ranch \"Arrow Wood Dr.\" "
+	],
+	[
+		//G
+		"\"R\" Street Village Apts. ",
+		
+		"El Redondo @ corner of Jenner before traffic circle ",
+		
+		"Merced College The Bus terminal ",
+		
+		"Ironstone Dr. ",
+		
+		"Bellevue Ranch on Arrow Wood Dr ",
+		
+		"Mammoth Lakes Rd. ",
+		
+		"Muir Pass (Student Activities and Athletics Center) ",
+		
+		"Emigrant Pass at Scholars Lane ",
+		
+		"Amtrak ",
+		
+		"Hollywood Mainplace Theatre ",
+	],
+	[
+		//Heritage
+		"\"R\" Street Village Apts.",
+		
+		"In-Shape",
+		
+		"Mammoth Lakes Rd.",
+		
+		"Muir Pass (Student Activities and Athletics Center) ",
+		
+		"Emigrant Pass at Scholars Lane"
+	]
+			
+]
