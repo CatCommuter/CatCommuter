@@ -55,7 +55,7 @@ namespace CatCommuter
                         times.Add(cellItem);
                     }
 
-                    busStopTimes.Add(stopName, times);
+                    busStopTimes[stopName] = times;
                 }
                 return busStopTimes;
             }
