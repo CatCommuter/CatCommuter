@@ -33,7 +33,7 @@ namespace CatCommuter
                 //Debug.WriteLine("BackRequested");
                 if (Frame.CanGoBack)
                 {
-                    Frame.GoBack();
+                    Frame.Navigate(typeof(MapPage));
                     a.Handled = true;
                 }
             };
