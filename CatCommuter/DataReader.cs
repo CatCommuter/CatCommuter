@@ -1,60 +1,75 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-//using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
+using Windows.Devices.Geolocation;
+using Windows.Storage;
+
 //static int /// <summary>
 ///   The main entry point for the application
 /// </summary>
 //[STAThread]
-namespace CatCommuter {
-	public class DataReader {
-		
+namespace CatCommuter
+{
+    public class DataReader
+    {
 
-		// Takes in file name of the .csv with the bus schedule data of this line.
-		// Returns a BusLine object with that line's data
-		// Returns null if error
-		static BusLine ReadScheduleCSV(string filename)
-		{
-			try
-			{
 
-				Debug.WriteLine("Reading Bus Data From File \"" + filename + "\"");
+        // Takes in file name of the .csv with the bus schedule data of this line.
+        // Returns a BusLine object with that line's data
+        // Returns null if error
+        public static async System.Threading.Tasks.Task<IDictionary<string, IList<string>>> ReadScheduleCSVAsync(StorageFile file)
+        {
+            try
+            {
+                IDictionary<string, IList<string>> busStopTimes = new Dictionary<string, IList<string>>();
+                Debug.WriteLine("Reading Bus Data From File \"" + file.Path + "\"");
 
-				//Read bus schedule data in from the .csv file
-				BusLine sampleLine = new BusLine("C2", new TimeSpan(), new DateTime());
+                //Read bus schedule data in from the .csv file
+                var stream = await file.OpenStreamForReadAsync();
+                StreamReader scheduleReader = new StreamReader(stream);
+                
+                // Each line in file should have times for a new stop
+                while (!scheduleReader.EndOfStream)
+                {
+                    string lineStr = scheduleReader.ReadLine();
 
-				StreamReader scheduleReader = new StreamReader(File.OpenRead(filename));
-				//using (StreamReader scheduleReader = new StreamReader(filename))
-				//{
+                    // Skip over titles/empty lines at top of file that don't contain bus times
+                    Regex timeFormat = new Regex("[0-9]?[0-9]:[0-9][0-9]");
+                    if (!timeFormat.IsMatch(lineStr))
+                    {
+                        continue;   // skip this line
+                    }
 
-					while (!scheduleReader.EndOfStream)
-						{
-							string lineStr = scheduleReader.ReadLine();
+                    Debug.WriteLine("Is a time line!!!: " + lineStr);
 
-							// Skip over titles/empty lines at top of file that don't contain bus times
-							Regex timeFormat = new Regex("[0-9]?[0-9]:[0-9][0-9]");
-							if (!timeFormat.IsMatch(lineStr))
-							{
-								continue;   // skip this line
-							}
+                    // Get the name of the stop
+                    string stopName = Regex.Match(lineStr, @"^.*?(?=[0-9]?[0-9]:[0-9][0-9])").Value;
 
-							Debug.WriteLine("Is a time line!!!: " + lineStr);
-					}
-				//}
-				return sampleLine;
-			}
-			catch (Exception e)
-			{
-				Debug.WriteLine("In ReadScheduleCSV, an error \"" + e + "\" occured!");
-			}
-			return null;
-		}
+                    IList<String> times = new List<String>();
 
-		//static void Main(string[] args)
-		//{
-		//	ReadScheduleCSV("../CatCommuter/assets/C2_test.csv");
-		//}
-	}
+                    foreach (string cellItem in lineStr.Split())
+                    {
+                        times.Add(cellItem);
+                    }
+
+                    busStopTimes[stopName] = times;
+                }
+                return busStopTimes;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine("In ReadScheduleCSV, an error \"" + e + "\" occured!");
+            }
+            return null;
+        }
+
+        //static void Main(string[] args)
+        //{
+        //	//ReadScheduleCSV("../CatCommuter/assets/C2_test.csv");
+        //	ReadScheduleCSV("C2_test.csv");
+        //}
+    }
 }

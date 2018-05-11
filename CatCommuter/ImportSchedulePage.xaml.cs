@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using Windows.ApplicationModel;
@@ -48,50 +49,23 @@ namespace CatCommuter
                 return;
             }
 
-            ReadScheduleCSVAsync(file);
+            IDictionary<string, IList<string>> rawData = await DataReader.ReadScheduleCSVAsync(file);
+            ConsoleTextBlock.Text = "";
+            foreach (string stop in rawData.Keys)
+            {
+                ConsoleTextBlock.Text += stop;
+            }
         }
 
         private async void InitializeButton_ClickAsync(object sender, RoutedEventArgs e)
         {
             StorageFile file = await Package.Current.InstalledLocation.GetFileAsync("C2_test.csv");
-            ReadScheduleCSVAsync(file);
-        }
-
-        async System.Threading.Tasks.Task<BusLine> ReadScheduleCSVAsync(StorageFile file)
-        {
-            try
+            IDictionary<string, IList<string>> rawData = await DataReader.ReadScheduleCSVAsync(file);
+            ConsoleTextBlock.Text = "";
+            foreach (string stop in rawData.Keys)
             {
-
-                ConsoleTextBlock.Text = "Reading Bus Data From File \"" + file.Path + "\"";
-
-                //Read bus schedule data in from the .csv file
-                BusLine sampleLine = new BusLine("C2", new TimeSpan(), new DateTime());
-                var stream = await file.OpenStreamForReadAsync();
-                StreamReader scheduleReader = new StreamReader(stream);
-                //using (StreamReader scheduleReader = new StreamReader(filename))
-                //{
-
-                while (!scheduleReader.EndOfStream)
-                {
-                    string lineStr = scheduleReader.ReadLine();
-
-                    // Skip over titles/empty lines at top of file that don't contain bus times
-                    Regex timeFormat = new Regex("[0-9]?[0-9]:[0-9][0-9]");
-                    if (!timeFormat.IsMatch(lineStr))
-                    {
-                        continue;   // skip this line
-                    }
-
-                    ConsoleTextBlock.Text = "Is a time line!!!: " + lineStr;
-                }
-                //}
-                return sampleLine;
+                ConsoleTextBlock.Text += stop;
             }
-            catch (Exception e)
-            {
-                ConsoleTextBlock.Text = e.Message + "\n" + e.StackTrace;
-            }
-            return null;
         }
     }
 }
