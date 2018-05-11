@@ -9,12 +9,10 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListView x:Name="stop_ListView"  ItemsSource="{Binding busStopToEdit}">
-            <TextBox Text="{Binding name}"/>
-            <TextBox Text="{x:Bind busStopToEdit.location.Latitude}"/>
-            <TextBox Text="{x:Bind busStopToEdit.location.Longitude}"/>
+            <TextBox Text="{Binding name, Mode=TwoWay}" />
+            <TextBox Text="{Binding lat, Mode=TwoWay}"/>
+            <TextBox Text="{Binding lon, Mode=TwoWay}"/>
             <Button x:Name="AddItem" Content="Add Stop" Click="AddNewStop_Click"/>
-
-
         </ListView>
     </Grid>
 </Page>
