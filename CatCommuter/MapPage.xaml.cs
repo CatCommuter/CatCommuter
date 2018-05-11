@@ -159,7 +159,6 @@ namespace CatCommuter
 
             double currentHigh = 0.0;
             BasicGeoposition location = new BasicGeoposition();
-            //int i = 0;
 
             if (e.Key == Windows.System.VirtualKey.Enter /*|| search button is pressed*/)
             {
@@ -187,22 +186,8 @@ namespace CatCommuter
                      *  
                      **************/
 
-                    BusStopDice BSD = new BusStopDice(stop, diceCoefficient(dest, stop));
-<<<<<<< HEAD
-                    
-                    //var messageDialog1 = new MessageDialog("Dice coefficient of " + BSD.stop.name + " is = " + BSD.dice + ".");
-                    //Debug.WriteLine(i);
-                    //i++;
-                    //messageDialog1.Commands.Add(new UICommand("Close"));
-                    //messageDialog1.CancelCommandIndex = 0;
-                    //await messageDialog1.ShowAsync();
-=======
-                        
+                    BusStopDice BSD = new BusStopDice(stop, diceCoefficient(dest, stop));          
                     Debug.WriteLine("Dice coefficient of " + BSD.stop.name + " is = " + BSD.dice + ".");
-<<<<<<< HEAD
->>>>>>> f4fbd088e830974427676a7e59cfc65267bc7470
-=======
->>>>>>> f4fbd088e830974427676a7e59cfc65267bc7470
 
                     if (stop.name.ToLower().Equals(dest))
                     {
