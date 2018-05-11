@@ -12,7 +12,8 @@
         <StackPanel>
             <ScrollViewer>
                 <TextBlock x:Name="ConsoleTextBlock" 
-                           Text="''console'' output" MinHeight="100"
+                           Text="Import a schedule" 
+                           MinHeight="100"
                            TextWrapping="Wrap"
                            />
             </ScrollViewer>
