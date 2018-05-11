@@ -93,7 +93,8 @@ namespace CatCommuter
                     Longitude = GetRandomNumber(-120.494791, -120.444666)
                 };
                 //TODO: times
-                BusStop busStop = new BusStop(stop, , position);
+
+                BusStop busStop = new BusStop(stop, null, position);
                 BusStopManager.getInstance().busStops.Add(busStop);
                 busLine.addStop(busStop);
             }
