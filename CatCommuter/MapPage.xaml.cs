@@ -219,6 +219,11 @@ namespace CatCommuter
 
             return (2.0 * intersection.Count) / (setA.Count + setB.Count);
         }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            CenterMap(userLocation, 14);
+        }
         // method returns int, called dice_coefficient()
         // custom class that contains busstopname and its corresponding dice coefficient
         // implement / inherit comparitor

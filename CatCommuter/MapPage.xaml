@@ -23,8 +23,9 @@
                               Click="List_Click"
                               ClickMode="Release"
                               />
-                <!--<AppBarButton Icon="Find"
-                              Label="Search"/>-->
+                <AppBarButton Icon="Target"
+                              Label="Current position"
+                              Click="AppBarButton_Click"/>
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
                 <AppBarButton Icon="Help"
@@ -32,9 +33,9 @@
                 <AppBarButton Icon="Import"
                               Label="Import"
                               Click="AppBarButton_Click_1"/>
-                <AppBarButton Label="Recent Routes"
+                <!--<AppBarButton Label="Recent Routes"
                               Icon="Directions"
-                              Click="AppBarButton_Click_2"/>
+                              Click="AppBarButton_Click_2"/>-->
             </CommandBar.SecondaryCommands>
         </CommandBar>
     </Page.BottomAppBar>
