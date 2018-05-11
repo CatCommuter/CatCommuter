@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
 using Windows.ApplicationModel;
+using Windows.Devices.Geolocation;
 using Windows.Storage;
 using Windows.UI.Core;
 using Windows.UI.Popups;
@@ -18,6 +20,7 @@ namespace CatCommuter
     /// </summary>
     public sealed partial class ImportSchedulePage : Page
     {
+        Random random = new Random();
         public ImportSchedulePage()
         {
             this.InitializeComponent();
@@ -50,21 +53,44 @@ namespace CatCommuter
             }
 
             IDictionary<string, IList<string>> rawData = await DataReader.ReadScheduleCSVAsync(file);
-            ConsoleTextBlock.Text = "";
+            ConsoleTextBlock.Text = "Imported the following stops: ";
+            
             foreach (string stop in rawData.Keys)
             {
                 ConsoleTextBlock.Text += stop;
+                BasicGeoposition position = new BasicGeoposition
+                {
+                    Latitude = GetRandomNumber(37.304328, 37.350193),
+                    Longitude = GetRandomNumber(-120.494791, -120.444666)
+                };
+                Debug.WriteLine(position.Longitude);
+                BusStop busStop = new BusStop(stop, null, position);
+                BusStopManager.getInstance().busStops.Add(busStop);
             }
+        }
+
+        public double GetRandomNumber(double minimum, double maximum)
+        {
+            return random.NextDouble() * (maximum - minimum) + minimum;
         }
 
         private async void InitializeButton_ClickAsync(object sender, RoutedEventArgs e)
         {
             StorageFile file = await Package.Current.InstalledLocation.GetFileAsync("C2_test.csv");
             IDictionary<string, IList<string>> rawData = await DataReader.ReadScheduleCSVAsync(file);
-            ConsoleTextBlock.Text = "";
+            ConsoleTextBlock.Text = "Imported the following stops: ";
+
             foreach (string stop in rawData.Keys)
             {
                 ConsoleTextBlock.Text += stop;
+                BasicGeoposition position = new BasicGeoposition
+                {
+                    Latitude = GetRandomNumber(37.304328, 37.350193),
+                    Longitude = GetRandomNumber(-120.494791, -120.444666)
+                };
+                Debug.WriteLine(position.Longitude);
+                BusStop busStop = new BusStop(stop, null, position);
+                BusStopManager.getInstance().busStops.Add(busStop);
             }
         }
     }

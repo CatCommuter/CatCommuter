@@ -17,6 +17,7 @@ using Windows.Devices.Geolocation;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using System.Diagnostics;
+using Windows.Storage.Streams;
 
 
 
@@ -62,7 +63,8 @@ namespace CatCommuter
                 NormalizedAnchorPoint = new Point(.5, 1.0),
 
                 ZIndex = 0,
-                Title = "You are here"
+                Title = "You are here",
+                Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/my_location_40px.png"))
             };
 
             Map.MapElements.Add(newBusStopPin);
@@ -112,9 +114,11 @@ namespace CatCommuter
 
         private void ClosestStop_Click(object sender, RoutedEventArgs e)
         {
-            BasicGeoposition gp = new BasicGeoposition(); //replace this with the current device location
-            gp.Longitude = -120.422507;
-            gp.Latitude = 37.367543;
+            BasicGeoposition gp = new BasicGeoposition
+            {
+                Latitude = Map.Center.Position.Latitude,
+                Longitude = Map.Center.Position.Longitude
+            }; //replace this with the current device location
             //bsManager.getBusStop(gp).name;
 
             name = bsManager.getBusStop(gp).name;

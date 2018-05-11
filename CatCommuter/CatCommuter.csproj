@@ -135,6 +135,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <Content Include="Assets\my_location_40px.png" />
     <Content Include="C2_test.csv" />
     <None Include="CatCommuter_StoreKey.pfx" />
     <None Include="CatCommuter_TemporaryKey.pfx" />
