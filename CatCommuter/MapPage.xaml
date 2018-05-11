@@ -18,11 +18,11 @@
                 <AppBarButton Icon="MapPin"
                               Label="Find Closest Stop" 
                               Click="ClosestStop_Click"/>
-                <AppBarButton Icon="List"
+                <!--<AppBarButton Icon="List"
                               Label="Bus Stops" 
                               Click="List_Click"
                               ClickMode="Release"
-                              />
+                              />-->
                 <AppBarButton Icon="Target"
                               Label="Current position"
                               Click="AppBarButton_Click"/>

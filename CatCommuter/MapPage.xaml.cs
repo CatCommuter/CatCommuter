@@ -150,7 +150,8 @@ namespace CatCommuter
         {
             Debug.WriteLine(e.Key);
 
-
+            double currentHigh = 0.0;
+            BasicGeoposition location;
 
             if (e.Key == Windows.System.VirtualKey.Enter /*|| search button is pressed*/)
             {
@@ -193,8 +194,7 @@ namespace CatCommuter
                         // map will center onto that stop (probably by lat/long coordinates)
                     }
 
-                    double currentHigh = 0.0;
-                    BasicGeoposition location;
+
 
                     if (currentHigh < BSD.dice)
                     {
@@ -205,11 +205,11 @@ namespace CatCommuter
                 }
                 // end foreach loop
                 
-                if (currentHigh > 0.5)
+                /*if (currentHigh > 0.5)
                 {
                     CenterMap(location, 15);
                     return;
-                }
+                }*/
 
                 var messageDialog = new MessageDialog("No bus stop detected.");
                 messageDialog.Commands.Add(new UICommand("Close"));
