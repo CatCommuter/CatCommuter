@@ -110,6 +110,9 @@
     <Compile Include="BusStop.cs" />
     <Compile Include="BusStopManager.cs" />
     <Compile Include="DataReader.cs" />
+    <Compile Include="EditStop.xaml.cs">
+      <DependentUpon>EditStop.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ImportSchedulePage.xaml.cs">
       <DependentUpon>ImportSchedulePage.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,10 @@
     <Page Include="EditLine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditStop.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ImportSchedulePage.xaml">
       <SubType>Designer</SubType>

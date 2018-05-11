@@ -9,8 +9,10 @@ namespace CatCommuter
 {
     public class BusStop
     {
-        public string name { get; }
-        public BasicGeoposition location { get; }
+        public string name { get; set; }
+        public BasicGeoposition location { get; set; }
+        public double lat { get; set; } = 0.0;
+        public double lon { get; set; }
         IDictionary<BusLine, ISet<DateTime>> busLines { get; }
         public ISet<DateTime> times
         { get
@@ -29,6 +31,8 @@ namespace CatCommuter
             else
                 this.busLines = new Dictionary<BusLine, ISet<DateTime>>();
             this.location = location;
+            this.lat = location.Latitude;
+            this.lon = location.Longitude;
         }
 
         public ISet<DateTime> getTimes(BusLine busLine)
@@ -36,6 +40,11 @@ namespace CatCommuter
             ISet<DateTime> returnSet = null;
             busLines.TryGetValue(busLine, out returnSet);
             return returnSet;
+        }
+
+        public void updatePosition()
+        {
+            location = new BasicGeoposition { Latitude = lat, Longitude = lon };
         }
     }
 }
