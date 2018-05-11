@@ -51,12 +51,19 @@ namespace CatCommuter
         {
             Geolocator geolocator = new Geolocator();
             geolocator.DesiredAccuracy = PositionAccuracy.Default;
-            Geoposition position = await geolocator.GetGeopositionAsync();
-            BasicGeoposition basicGeoposition = new BasicGeoposition
+            BasicGeoposition basicGeoposition = new BasicGeoposition();
+            if (await Geolocator.RequestAccessAsync() == GeolocationAccessStatus.Allowed)
             {
-                Latitude = position.Coordinate.Point.Position.Latitude,
-                Longitude = position.Coordinate.Point.Position.Longitude
-            };
+                Geoposition position = await geolocator.GetGeopositionAsync(new TimeSpan(1, 0, 0), new TimeSpan(0, 0, 30));
+                basicGeoposition.Latitude = position.Coordinate.Point.Position.Latitude;
+                basicGeoposition.Longitude = position.Coordinate.Point.Position.Longitude;
+            }
+            else
+            {
+                basicGeoposition.Latitude = 37.367543;
+                basicGeoposition.Longitude = -120.422507;
+            }
+                
             var newBusStopPin = new MapIcon
             {
                 Location = new Geopoint(basicGeoposition),
