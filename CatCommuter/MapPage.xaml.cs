@@ -17,6 +17,7 @@ using Windows.Devices.Geolocation;
 using Windows.UI.Core;
 using Windows.UI.Popups;
 using System.Diagnostics;
+using Windows.Storage.Streams;
 
 
 
@@ -62,7 +63,8 @@ namespace CatCommuter
                 NormalizedAnchorPoint = new Point(.5, 1.0),
 
                 ZIndex = 0,
-                Title = "You are here"
+                Title = "You are here",
+                Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/my_location_40px.png"))
             };
 
             Map.MapElements.Add(newBusStopPin);
