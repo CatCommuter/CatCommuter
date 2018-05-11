@@ -47,7 +47,7 @@
                            HorizontalAlignment="Stretch" 
                            VerticalAlignment="Stretch" 
                            CanDrag="True" 
-                           MapServiceToken="grnmZzGPAQ9RwhLIn5Id~YbgDRxe0X8ZKRnr3AHxQVA~AkhogxQw41df_OUgph1EVfLCuBuDgxjrPxeqY0kmrG18pU_wZ02gn0H9LeoIqWaf"
+                           MapServiceToken="grnmZzGPAQ9RwhLIn5Id~YbgDRxe0X8ZKRnr3AHxQVA~AkhogxQw41df_OUgph1EVfLCuBuDgxjrPxeqY0kmrG18pU_wZ02gn0H9LeoIqWaf" BusinessLandmarksVisible="True" LandmarksVisible="True" PedestrianFeaturesVisible="True"
                            
                            />
         <AutoSuggestBox x:Name="MapSearchTextBox"

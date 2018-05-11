@@ -33,6 +33,7 @@ namespace CatCommuter
     {
         String name;
         BusStopManager bsManager;
+        private BasicGeoposition userLocation;
 
         public MapPage()
         {
@@ -42,8 +43,32 @@ namespace CatCommuter
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Collapsed;
 
             AddPins();
+            getUserLocationAsync();
         }
 
+        private async void getUserLocationAsync()
+        {
+            Geolocator geolocator = new Geolocator();
+            geolocator.DesiredAccuracy = PositionAccuracy.Default;
+            Geoposition position = await geolocator.GetGeopositionAsync();
+            BasicGeoposition basicGeoposition = new BasicGeoposition
+            {
+                Latitude = position.Coordinate.Point.Position.Latitude,
+                Longitude = position.Coordinate.Point.Position.Longitude
+            };
+            var newBusStopPin = new MapIcon
+            {
+                Location = new Geopoint(basicGeoposition),
+                NormalizedAnchorPoint = new Point(.5, 1.0),
+
+                ZIndex = 0,
+                Title = "You are here"
+            };
+
+            Map.MapElements.Add(newBusStopPin);
+            userLocation = basicGeoposition;
+            CenterMap(basicGeoposition, 14);
+        }
 
         private void AddPins()
         {
