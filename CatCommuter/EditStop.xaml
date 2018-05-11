@@ -8,10 +8,10 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListView>
-            <TextBox Text="TextBox"/>
-            <TextBox Text="TextBox"/>
-            <TextBox Text="TextBox"/>
+        <ListView x:Name="stop_ListView"  ItemsSource="{Binding busStopToEdit}">
+            <TextBox Text="{Binding name}"/>
+            <TextBox Text="{x:Bind busStopToEdit.location.Latitude}"/>
+            <TextBox Text="{x:Bind busStopToEdit.location.Longitude}"/>
             <Button x:Name="AddItem" Content="Add Stop" Click="AddNewStop_Click"/>
 
 

@@ -87,30 +87,16 @@ namespace CatCommuter
             Frame.Navigate(typeof(EditStop));
         }
 
+        private void EditBusStop_Click(object sender, RoutedEventArgs e)
+        {
+            Button _button = (Button)sender;
+            toEditBusStop = _button.DataContext as BusStop;
+            Frame.Navigate(typeof(EditStop));
+        }
         private void CreateBusStop_Click(object sender, RoutedEventArgs e)
         {
             toEditBusStop = null;
             Frame.Navigate(typeof(EditStop));
-        }
-
-        // Handles the Click event on the Button on the page and opens the Popup. 
-        private void ShowPopupOffsetClicked(object sender, RoutedEventArgs e)
-        {
-            // open the Popup if it isn't open already 
-            //if (toEditBusStop == null)
-            //    toEditBusStop = new BusStop()
-            Button _button = (Button)sender;
-            toEditBusStop = _button.DataContext as BusStop;
-            if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
-        }
-
-        // Handles the Click event on the Button inside the Popup control and 
-        // closes the Popup. 
-        private void ClosePopupClicked(object sender, RoutedEventArgs e)
-        {
-            // if the Popup is open, then close it 
-            if (StandardPopup.IsOpen) { StandardPopup.IsOpen = false; }
-            toEditBusStop = null;
         }
 
     }

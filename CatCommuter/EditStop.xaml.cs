@@ -25,22 +25,23 @@ namespace CatCommuter
     /// </summary>
     public sealed partial class EditStop : Page
     {
-        BusStop busStopToEdit;
+        BusStop busStopToEdit { get; set; }
         BusStopManager bsManager = BusStopManager.getInstance();
-        string name;
-        BasicGeoposition position;
+        //string name;
         BusLine busLineSelected = Preferences.toEditBusLine;
+
 
         public EditStop()
         {
             this.InitializeComponent();
             busStopToEdit = EditLine.toEditBusStop;
-            
+            stop_ListView.DataContext = null;
+            stop_ListView.DataContext = busStopToEdit;
         }
 
         private void AddNewStop_Click(object sender, RoutedEventArgs e)
         {
-            bsManager.addBusStop(name, position, busLineSelected);
+            //bsManager.addBusStop(name, position, busLineSelected);
         }
     }
 }
