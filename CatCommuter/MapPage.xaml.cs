@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Devices.Geolocation;
 using Windows.UI.Core;
 using Windows.UI.Popups;
+using System.Diagnostics;
 
 
 
@@ -26,6 +27,8 @@ namespace CatCommuter
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+    /// 
+
     public sealed partial class MapPage : Page
     {
         String name;
@@ -112,9 +115,11 @@ namespace CatCommuter
             Frame.Navigate(typeof(LoginPage));
         }
 
+        
+
         private async void MapSearchTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
-
+            Debug.WriteLine(e.Key);
 
             if (e.Key == Windows.System.VirtualKey.Enter /*|| search button is pressed*/)
             {
@@ -142,11 +147,20 @@ namespace CatCommuter
                      *  
                      **************/
 
+                    BusStopDice BSD = new BusStopDice(stop, diceCoefficient(dest, stop));
+                        
+                    var messageDialog1 = new MessageDialog("Dice coefficient of " + BSD.stop.name + " is = " + BSD.dice + ".");
+                    messageDialog1.Commands.Add(new UICommand("Close"));
+                    messageDialog1.CancelCommandIndex = 0;
+                    await messageDialog1.ShowAsync();
+
                     if (stop.name.ToLower().Equals(dest))
                     {
                         CenterMap(stop.location, 15);
                         return;
                     }
+
+                    double temp = 0.0;
             
                 }
 
@@ -161,6 +175,39 @@ namespace CatCommuter
 
 
             }
+        }
+
+        public double diceCoefficient(string dest, BusStop busstop)
+        {
+            string stop = busstop.name.ToLower();
+            HashSet<string> setA = new HashSet<string>();
+            HashSet<string> setB = new HashSet<string>();
+
+            for (int i = 0; i < dest.Length - 1; ++i)
+                setA.Add(dest.Substring(i, 2));
+
+            for (int i = 0; i < stop.Length - 1; ++i)
+                setB.Add(stop.Substring(i, 2));
+
+            HashSet<string> intersection = new HashSet<string>(setA);
+            intersection.IntersectWith(setB);
+
+            return (2.0 * intersection.Count) / (setA.Count + setB.Count);
+        }
+        // method returns int, called dice_coefficient()
+        // custom class that contains busstopname and its corresponding dice coefficient
+        // implement / inherit comparitor
+        // compare to another class and compare dice coefficients and return -1, 0 or 1
+    }
+
+    class BusStopDice
+    {
+        public BusStop stop { get; }
+        public double dice { get; }
+
+        public BusStopDice(BusStop stop, double dice) {
+            this.stop = stop;
+            this.dice = dice;
         }
     }
 }

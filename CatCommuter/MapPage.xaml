@@ -50,12 +50,12 @@
                            MapServiceToken="grnmZzGPAQ9RwhLIn5Id~YbgDRxe0X8ZKRnr3AHxQVA~AkhogxQw41df_OUgph1EVfLCuBuDgxjrPxeqY0kmrG18pU_wZ02gn0H9LeoIqWaf"
                            
                            />
-        <AutoSuggestBox x:Name="AutoSuggestBox"
+        <AutoSuggestBox x:Name="MapSearchTextBox"
                         HorizontalAlignment="Stretch"
                         Margin="10,10,10,0"
                         VerticalAlignment="Top"
                         PlaceholderText="Search"
-                        KeyDown="MapSearchTextBox_KeyDown"
+                        KeyUp="MapSearchTextBox_KeyDown"
                         >
             <AutoSuggestBox.Text>
                 <Binding Source="{Binding name}" Path="CatCommuter.MapPage"
@@ -63,7 +63,7 @@
             </AutoSuggestBox.Text>
         </AutoSuggestBox>
 
-        <TextBox x:Name="MapSearchTextBox" 
+        <!--<TextBox x:Name="MapSearchTextBox" 
                  HorizontalAlignment="Stretch" 
                  Margin="10,10,10,0" 
                  VerticalAlignment="Top" 
@@ -76,7 +76,7 @@
                 <Binding Source="{Binding name}" Path="CatCommuter.MapPage"
                    UpdateSourceTrigger="PropertyChanged"/>
             </TextBox.Text>
-        </TextBox>
+        </TextBox>-->
 
     </Grid>
 </Page>
