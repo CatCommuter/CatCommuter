@@ -16,13 +16,15 @@
                               Label="Preferences" 
                               Click="goPreferencesButton_Click"/>
                 <AppBarButton Icon="MapPin"
-                              Label="Get closest stop" 
+                              Label="Find Closest Stop" 
                               Click="ClosestStop_Click"/>
-                <AppBarButton Icon="Sync"
-                              Label="Refresh" 
-                              Click="AppBarButton_Click"/>
-                <AppBarButton Icon="Find"
-                              Label="Search"/>
+                <AppBarButton Icon="List"
+                              Label="Bus Stops" 
+                              Click="List_Click"
+                              ClickMode="Release"
+                              />
+                <!--<AppBarButton Icon="Find"
+                              Label="Search"/>-->
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
                 <AppBarButton Icon="Help"
@@ -37,6 +39,8 @@
         </CommandBar>
     </Page.BottomAppBar>
     
+    
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Custom:MapControl x:Name ="Map"
@@ -46,6 +50,19 @@
                            MapServiceToken="grnmZzGPAQ9RwhLIn5Id~YbgDRxe0X8ZKRnr3AHxQVA~AkhogxQw41df_OUgph1EVfLCuBuDgxjrPxeqY0kmrG18pU_wZ02gn0H9LeoIqWaf"
                            
                            />
+        <AutoSuggestBox x:Name="AutoSuggestBox"
+                        HorizontalAlignment="Stretch"
+                        Margin="10,10,10,0"
+                        VerticalAlignment="Top"
+                        PlaceholderText="Search"
+                        KeyDown="MapSearchTextBox_KeyDown"
+                        >
+            <AutoSuggestBox.Text>
+                <Binding Source="{Binding name}" Path="CatCommuter.MapPage"
+                         UpdateSourceTrigger="PropertyChanged"/>
+            </AutoSuggestBox.Text>
+        </AutoSuggestBox>
+
         <TextBox x:Name="MapSearchTextBox" 
                  HorizontalAlignment="Stretch" 
                  Margin="10,10,10,0" 

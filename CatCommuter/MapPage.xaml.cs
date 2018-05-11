@@ -72,7 +72,7 @@ namespace CatCommuter
 
         }
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        private void List_Click(object sender, RoutedEventArgs e)
         {
 
         }
@@ -114,6 +114,8 @@ namespace CatCommuter
 
         private async void MapSearchTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {
+
+
             if (e.Key == Windows.System.VirtualKey.Enter /*|| search button is pressed*/)
             {
                 // if Enter key is pressed
@@ -122,8 +124,24 @@ namespace CatCommuter
                 dest = dest.ToLower();
                 BusStopManager busStopManager = BusStopManager.getInstance();
 
+                // compare to names of stops
+                // by looping through BusStops collection in BusStopManager
+
                 foreach (BusStop stop in busStopManager.busStops)
                 {
+                    // whichever one is the closest (maybe by string compare functions?)
+                    // if doing closest stop name to destination name, consider Fuzzy Search
+                    /**************
+                     * Option 1:
+                     *  Compare destination names to all stop names and assign a value based on how close they are
+                     *  Potentially Dice Coefficient
+                     *  Choose the one that has the value closest to 1 (which indicates it's the most accurate)
+                     *  BingMapsDialog(stop.location, 15); where location is the closest to 1 (in terms of text comparison)
+                     *  
+                     * Option 2:
+                     *  
+                     **************/
+
                     if (stop.name.ToLower().Equals(dest))
                     {
                         BingMapsDialog(stop.location, 15);
@@ -132,19 +150,16 @@ namespace CatCommuter
             
                 }
 
+                // map will center onto that stop (probably by lat/long coordinates)
                 var messageDialog = new MessageDialog("No bus stop detected.");
                 messageDialog.Commands.Add(new UICommand("Close"));
                 messageDialog.CancelCommandIndex = 0;
                 await messageDialog.ShowAsync();
 
-                // compare to names of stops
-                // by looping through BusStops collection in BusStopManager
-                // whichever one is the closest (maybe by string compare functions?)
-                // map will center onto that stop (probably by lat/long coordinates)
-
-
                 // look at partial search i.e., "Muir" gives you "Muir Pass"
-                // could also look at suggestions drop box 
+                // could also look at suggestions drop box
+
+
             }
         }
     }
