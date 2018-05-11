@@ -29,8 +29,8 @@
                 </ListView.ItemTemplate>
             </ListView>
             
-            <Button x:Name="AddItem" Content="Add Item" Click="AddItem_Click"/>
-            <Button x:Name="AddStop" Content="Add Stop" Click="CreateBusStop_Click"/>
+            <Button x:Name="AddItem" Content="Add Bus Stop" Click="AddItem_Click"/>
+ 
  
               
 

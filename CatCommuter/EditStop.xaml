@@ -12,7 +12,7 @@
             <TextBox Text="{Binding name, Mode=TwoWay}" />
             <TextBox Text="{Binding lat, Mode=TwoWay}"/>
             <TextBox Text="{Binding lon, Mode=TwoWay}"/>
-            <Button x:Name="AddItem" Content="Add Stop" Click="AddNewStop_Click"/>
+            <Button x:Name="AddItem" Content="Save" Click="AddNewStop_Click"/>
         </ListView>
     </Grid>
 </Page>
