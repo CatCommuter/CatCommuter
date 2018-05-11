@@ -93,8 +93,14 @@ namespace CatCommuter
                     Longitude = GetRandomNumber(-120.494791, -120.444666)
                 };
                 //TODO: times
-
-                BusStop busStop = new BusStop(stop, null, position);
+                ISet<DateTime> times = new HashSet<DateTime>();
+                foreach (string time in rawData[stop])
+                {
+                    times.Add(new DateTime(2018, 4, 11, random.Next(24), random.Next(60), random.Next(60)));
+                }
+                IDictionary<BusLine, ISet<DateTime>> buslinestuff = new Dictionary<BusLine, ISet<DateTime>>();
+                buslinestuff[busLine] = times;
+                BusStop busStop = new BusStop(stop, buslinestuff, position);
                 BusStopManager.getInstance().busStops.Add(busStop);
                 busLine.addStop(busStop);
             }
