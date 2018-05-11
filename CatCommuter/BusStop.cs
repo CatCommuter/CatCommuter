@@ -10,7 +10,7 @@ namespace CatCommuter
     public class BusStop
     {
         public string name { get; }
-        public BasicGeoposition location { get; } //TODO
+        public BasicGeoposition location { get; }
         IDictionary<BusLine, ISet<DateTime>> busLines { get; }
         public ISet<DateTime> times
         { get
