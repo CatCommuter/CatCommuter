@@ -91,10 +91,10 @@ namespace CatCommuter
 
             name = bsManager.getBusStop(gp).name;
             MapSearchTextBox.Text = name;
-            BingMapsDialog(bsManager.getBusStop(gp).location, 15);
+            CenterMap(bsManager.getBusStop(gp).location, 15);
         }
 
-        public void BingMapsDialog(BasicGeoposition center, int zoom)
+        public void CenterMap(BasicGeoposition center, int zoom)
         {
             InitializeComponent();
             Geopoint geopoint = new Geopoint(center);
@@ -126,7 +126,7 @@ namespace CatCommuter
                 {
                     if (stop.name.ToLower().Equals(dest))
                     {
-                        BingMapsDialog(stop.location, 15);
+                        CenterMap(stop.location, 15);
                         return;
                     }
             
