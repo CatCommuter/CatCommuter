@@ -35,12 +35,13 @@ namespace CatCommuter
 
             //Add a back button
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, a) =>
             {
-                Debug.WriteLine("BackRequested");
+                //Debug.WriteLine("BackRequested");
                 if (Frame.CanGoBack)
                 {
-                    Frame.GoBack();
+                    Frame.Navigate(typeof(Preferences));
                     a.Handled = true;
                 }
             };
@@ -76,15 +77,15 @@ namespace CatCommuter
             //BusStop sampleStop = new BusStop("Emigrant Pass at Scholars Lane ", bsManager.busLines, position);
             //bsManager.busStops.Add(sampleStop);
             //busLineSelected.addStop(sampleStop);
-            bsManager.addBusStop("Em Pass", position, busLineSelected);
+            bsManager.addBusStop("New Stop", position, busLineSelected);
             stop_ListView.ItemsSource = null;
             stop_ListView.ItemsSource = busLineSelected.busStops;
             DataContext = busLineSelected.busStops;
             _parentItems = busLineSelected.busStops;
 
-            Button _button = (Button)sender;
-            toEditBusStop = _button.DataContext as BusStop;
-            Frame.Navigate(typeof(EditStop));
+            //Button _button = (Button)sender;
+            //toEditBusStop = _button.DataContext as BusStop;
+            //Frame.Navigate(typeof(EditStop));
         }
 
         private void EditBusStop_Click(object sender, RoutedEventArgs e)

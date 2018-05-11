@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Devices.Geolocation;
 
+using Windows.UI.Core;
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace CatCommuter
@@ -33,6 +35,19 @@ namespace CatCommuter
         public EditStop()
         {
             this.InitializeComponent();
+            //Add a back button
+
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            SystemNavigationManager.GetForCurrentView().BackRequested += (s, a) =>
+            {
+                //Debug.WriteLine("BackRequested");
+                if (Frame.CanGoBack)
+                {
+                    Frame.Navigate(typeof(EditLine));
+                    a.Handled = true;
+                }
+            };
+
             busStopToEdit = EditLine.toEditBusStop;
             stop_ListView.DataContext = null;
             stop_ListView.DataContext = busStopToEdit;
@@ -43,6 +58,7 @@ namespace CatCommuter
         {
             //bsManager.addBusStop(name, busStopToEdit.position, busLineSelected);
             busStopToEdit.updatePosition();
+            Frame.Navigate(typeof(EditLine));
         }
     }
 }

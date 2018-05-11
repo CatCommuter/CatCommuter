@@ -26,10 +26,11 @@ namespace CatCommuter
             this.InitializeComponent();
 
             //Add a back button
+            
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             SystemNavigationManager.GetForCurrentView().BackRequested += (s, a) =>
             {
-                Debug.WriteLine("BackRequested");
+                //Debug.WriteLine("BackRequested");
                 if (Frame.CanGoBack)
                 {
                     Frame.GoBack();
@@ -46,17 +47,17 @@ namespace CatCommuter
 
         private void AddItem_Click(object sender, RoutedEventArgs e)
         {
-            BusLine sampleLine = new BusLine("I'm A New Line", new TimeSpan(20), new DateTime());
+            BusLine sampleLine = new BusLine("New Line", new TimeSpan(20), new DateTime());
             ISet<DateTime> times = new HashSet<DateTime>();
             times.Add(new DateTime());
             bsManager.busLines.Add(sampleLine, times);
             BasicGeoposition position = new BasicGeoposition
             {
-                Latitude = 37.363255,
-                Longitude = -120.429427
+                Latitude = 37.363,
+                Longitude = -120.429
 
             };
-            BusStop sampleStop = new BusStop("Mammoth Lakes Rd.", bsManager.busLines, position);
+            BusStop sampleStop = new BusStop("New Stop", bsManager.busLines, position);
             bsManager.busStops.Add(sampleStop);
             sampleLine.addStop(sampleStop);
             ReloadBusLines();
