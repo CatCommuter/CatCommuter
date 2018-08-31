@@ -21,9 +21,13 @@
                     Content="Initialize default schedules"
                     Click="InitializeButton_ClickAsync"/>
             <Button x:Name="ImportButton"
-                    Content="Import"
+                    Content="Import Schedule"
                     Click="ImportButton_ClickAsync"
                     />
-        </StackPanel>
+			<Button x:Name="ImportStopLocations"
+					Content="Import Stops" Click="ImportStopLocations_Click"
+					
+			        />
+		</StackPanel>
     </Grid>
 </Page>

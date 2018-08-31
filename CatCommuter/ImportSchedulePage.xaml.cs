@@ -106,5 +106,33 @@ namespace CatCommuter
             }
             BusStopManager.getInstance().busLines[busLine] = new HashSet<DateTime>();            
         }
-    }
+
+		private async void ImportStopLocations_Click(object sender, RoutedEventArgs e)
+		{
+			String fileName = "BusStops_test.json";
+			Debug.WriteLine("***** ImportStopLocations_Click CALLED *****");
+			try
+			{
+				StorageFile file = await Package.Current.InstalledLocation.GetFileAsync(fileName);
+			}
+			catch (System.IO.FileNotFoundException ex)
+			{
+				//Debug.WriteLine("Error: " + fileName + " not found");
+				Debug.WriteLine(ex.ToString());
+				//MessageBox.Show("Error: " + fileName + " not found");
+				//DisplayAlert	// DisplayAlery works in Xamrin
+
+				ContentDialog LocationFileNotFound = new ContentDialog
+				{
+					Title = "Oops! ",
+					Content = "Location file \"" + fileName + "\" not found!",
+					CloseButtonText = "Ok"
+				};
+				ContentDialogResult result = await LocationFileNotFound.ShowAsync();
+
+				return;
+			}
+			
+		}
+	}
 }
