@@ -70,7 +70,11 @@ namespace CatCommuter
         // Returns a dictionary mapping from stop names to bus latitude and longitude coordinates
         // Returns null if error
         public static async System.Threading.Tasks.Task<IDictionary<string, Tuple<double,double>>> ReadBusLocations(StorageFile file) {
+            Debug.WriteLine("Reading bus stop locations from file " + Path.GetFileNameWithoutExtension(file.Name));
             // TODO: Read the bus coordinates into ImportSchedulePage.xaml.cs to plot the bus locations at the correct coordinates
+
+
+
             return null;
         }
 
