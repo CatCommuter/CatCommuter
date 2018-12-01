@@ -23,6 +23,7 @@ namespace CatCommuter
     public sealed partial class ImportSchedulePage : Page
     {
         Random random = new Random();
+        public static IDictionary<string, Tuple<double, double>> BusStopLocationsMap = null;
         public ImportSchedulePage()
         {
             this.InitializeComponent();
@@ -93,7 +94,12 @@ namespace CatCommuter
                 {
                     Latitude = GetRandomNumber(37.304328, 37.350193),
                     Longitude = GetRandomNumber(-120.494791, -120.444666)
-                };
+                    //if (BusStopLocationsMap != null) {
+                    //  Latitude = 
+                    //  Longitude = BusStopLocationsMap
+                    //}
+
+            };
                 //TODO: times
                 ISet<DateTime> times = new HashSet<DateTime>();
                 foreach (string time in rawData[stop])
@@ -159,6 +165,10 @@ namespace CatCommuter
 			{
                 //StorageFile file = await Package.Current.InstalledLocation.GetFileAsync(fileName);
                 StorageFile file = await StorageFile.GetFileFromPathAsync(filePath + "\\" + fileName);
+
+                // Read the file for stop data
+                BusStopLocationsMap = await DataReader.ReadBusLocations(file);
+
             }
 			catch (System.IO.FileNotFoundException ex)
 			{

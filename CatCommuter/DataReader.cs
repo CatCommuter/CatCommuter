@@ -17,7 +17,7 @@ namespace CatCommuter
     {
 
 
-        // Takes in file name of the .csv with the bus schedule data of this line.
+        // Takes in the .csv file with the bus schedule data of this line.
         // Returns a BusLine object with that line's data
         // Returns null if error
         public static async System.Threading.Tasks.Task<IDictionary<string, IList<string>>> ReadScheduleCSVAsync(StorageFile file)
@@ -63,6 +63,14 @@ namespace CatCommuter
             {
                 Debug.WriteLine("In ReadScheduleCSV, an error \"" + e + "\" occured!");
             }
+            return null;
+        }
+
+        // Takes in with the .json file with the bus schedule data of this line.
+        // Returns a dictionary mapping from stop names to bus latitude and longitude coordinates
+        // Returns null if error
+        public static async System.Threading.Tasks.Task<IDictionary<string, Tuple<double,double>>> ReadBusLocations(StorageFile file) {
+            // TODO: Read the bus coordinates into ImportSchedulePage.xaml.cs to plot the bus locations at the correct coordinates
             return null;
         }
 
