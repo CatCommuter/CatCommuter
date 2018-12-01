@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Devices.Geolocation;
 using Windows.Storage;
@@ -111,10 +113,53 @@ namespace CatCommuter
 		{
 			String fileName = "BusStops_test.json";
 			Debug.WriteLine("***** ImportStopLocations_Click CALLED *****");
-			try
+            Debug.WriteLine("Attempting to open file " + fileName);
+            Debug.WriteLine("");
+            Debug.WriteLine("");
+
+            // Look for the file by searching up several parent directories
+            String filePath = Package.Current.InstalledLocation.Path;
+            //Directory filePathDir = Package.Current.InstalledLocation.Di
+            await Task.Run(() => {
+                for (int i = 0; i < 5; i++)
+                {
+                    Debug.Write("Checking location " + filePath + "\\" + fileName + " : ");
+
+                    // Sometimes it says the file does not exist when it really does, because the program does not have permission to access the file. I tested this permission with:
+                    //Debug.WriteLine("Testing read:");
+                    //var worked = File.OpenRead("C:\\Users\\david\\OneDrive\\Documents\\GitHub\\CatCommuter\\CatCommuter\\BusStops_test.json"); // May cause System.UnauthorizedAccessException
+
+                    if (!(File.Exists(filePath + "\\" + fileName))) // If we have access to the higher directory, then we should be able to search for files here
+                    {
+
+                        //int lastDirectoryIndex = Math.Max(filePath.LastIndexOf("\\"), Math.Max(filePath.LastIndexOf("/"), 0));  // On different systems, the path might end in \ or /?
+                        //filePath = filePath.Substring(0, lastDirectoryIndex); // Doesn't recognize the correct directory
+
+                        filePath = Directory.GetParent(filePath).FullName;
+                        //filePath = Path.GetDirectoryName(Path.GetDirectoryName(filePath));  // skips some directories. And still doesn't recognize the correct ones
+                        
+
+                        Debug.WriteLine(" Not Found :-(");
+                    } else {
+                        Debug.WriteLine(" File found in directory! :-)");
+                        break;
+                    }
+                
+                }
+                if (!File.Exists(fileName))
+                {
+                    Debug.WriteLine("File was not found in nearest parent directories");
+                    filePath = Package.Current.InstalledLocation.Path;
+                }
+            });
+            
+
+
+            try
 			{
-				StorageFile file = await Package.Current.InstalledLocation.GetFileAsync(fileName);
-			}
+                //StorageFile file = await Package.Current.InstalledLocation.GetFileAsync(fileName);
+                StorageFile file = await StorageFile.GetFileFromPathAsync(filePath + "\\" + fileName);
+            }
 			catch (System.IO.FileNotFoundException ex)
 			{
 				//Debug.WriteLine("Error: " + fileName + " not found");

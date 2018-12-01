@@ -51,7 +51,7 @@
                            MapServiceToken="grnmZzGPAQ9RwhLIn5Id~YbgDRxe0X8ZKRnr3AHxQVA~AkhogxQw41df_OUgph1EVfLCuBuDgxjrPxeqY0kmrG18pU_wZ02gn0H9LeoIqWaf" 
                            BusinessLandmarksVisible="True" 
                            LandmarksVisible="True" 
-                           PedestrianFeaturesVisible="True"
+                           PedestrianFeaturesVisible="True" Style="Road"
                            />
         <AutoSuggestBox x:Name="MapSearchTextBox"
                         HorizontalAlignment="Stretch"

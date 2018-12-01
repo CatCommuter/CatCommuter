@@ -6,7 +6,6 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
-using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;

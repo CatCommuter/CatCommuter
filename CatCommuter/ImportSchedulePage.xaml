@@ -8,7 +8,13 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
         <StackPanel>
             <ScrollViewer>
                 <TextBlock x:Name="ConsoleTextBlock" 
@@ -19,15 +25,22 @@
             </ScrollViewer>
             <Button x:Name="InitializeButton"
                     Content="Initialize default schedules"
-                    Click="InitializeButton_ClickAsync"/>
+                    Click="InitializeButton_ClickAsync"
+                    HorizontalAlignment="Stretch"
+                    BorderBrush="White"
+                    />
             <Button x:Name="ImportButton"
                     Content="Import Schedule"
                     Click="ImportButton_ClickAsync"
+                    HorizontalAlignment="Stretch"
+                    BorderBrush="White"
                     />
 			<Button x:Name="ImportStopLocations"
 					Content="Import Stops" Click="ImportStopLocations_Click"
-					
+					HorizontalAlignment="Stretch"
+                    BorderBrush="White"
 			        />
 		</StackPanel>
+        
     </Grid>
 </Page>
