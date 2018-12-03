@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
 using Windows.Storage;
+using System.Runtime.Serialization.Json;
 
 //static int /// <summary>
 ///   The main entry point for the application
@@ -66,6 +67,12 @@ namespace CatCommuter
             return null;
         }
 
+        // This struct should be the same format as the bus stop json file being read
+        class busStopJsonStruct {
+            int i = 0;
+            // TODO: Insert c# code to mimic structure of json file with bus stopnames and coordiantes (latitude and logitude)
+        }
+
         // Takes in with the .json file with the bus schedule data of this line.
         // Returns a dictionary mapping from stop names to bus latitude and longitude coordinates
         // Returns null if error
@@ -73,9 +80,21 @@ namespace CatCommuter
             Debug.WriteLine("Reading bus stop locations from file " + Path.GetFileNameWithoutExtension(file.Name));
             // TODO: Read the bus coordinates into ImportSchedulePage.xaml.cs to plot the bus locations at the correct coordinates
 
+            //Get storage file as stream
+            Stream fileStream = (await file.OpenReadAsync()).AsStreamForRead();
+
+            //Get deserialize the json stream into the equivalent c# struct
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(busStopJsonStruct));
+            busStopJsonStruct busStopsStruct = (busStopJsonStruct)ser.ReadObject(fileStream);
+            
+            IDictionary<string, Tuple<double, double>> busStopsDict = new Dictionary<string, Tuple<double, double>>;
 
 
-            return null;
+            // TODO: Read the data from the busStopsStruct into the dictionary
+
+
+
+            return busStopsDict;
         }
 
         //static void Main(string[] args)
