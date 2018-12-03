@@ -71,6 +71,11 @@ namespace CatCommuter
         class busStopJsonStruct {
             int i = 0;
             // TODO: Insert c# code to mimic structure of json file with bus stopnames and coordiantes (latitude and logitude)
+
+            // TODO: Add code to convert this object to a dictionary mapping bus stop names to bus stop coordinates
+            public IDictionary<string, Tuple<double, double>> toBusStopsDict() {
+                return null;
+            }
         }
 
         // Takes in with the .json file with the bus schedule data of this line.
@@ -86,8 +91,8 @@ namespace CatCommuter
             //Get deserialize the json stream into the equivalent c# struct
             DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(busStopJsonStruct));
             busStopJsonStruct busStopsStruct = (busStopJsonStruct)ser.ReadObject(fileStream);
-            
-            IDictionary<string, Tuple<double, double>> busStopsDict = new Dictionary<string, Tuple<double, double>>;
+
+            IDictionary<string, Tuple<double, double>> busStopsDict = busStopsStruct.toBusStopsDict();    //new Dictionary<string, Tuple<double, double>>;
 
 
             // TODO: Read the data from the busStopsStruct into the dictionary
