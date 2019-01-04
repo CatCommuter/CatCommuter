@@ -7,6 +7,8 @@ using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
 using Windows.Storage;
 using System.Runtime.Serialization.Json;
+using Newtonsoft.Json.Linq; // has jobject
+//using System.Xml.Linq;
 
 //static int /// <summary>
 ///   The main entry point for the application
@@ -67,11 +69,29 @@ namespace CatCommuter
             return null;
         }
 
+        class coordinateStruct
+        {
+            double Coordinate { get; set; }
+        }
+
+        class busStopStruct
+        {
+            string locationName;
+            IDictionary<string, coordinateStruct> coordinates { get; set;}
+        }
+
+        class busLineStruct
+        {
+           List <busStopStruct> BusStopStructs { get; set; }
+        }
+
         // This struct should be the same format as the bus stop json file being read
         class busStopJsonStruct {
-            int i = 0;
+            public IDictionary <string, busLineStruct> stops { get; set; }
+            //int i = 0;
             // TODO: Insert c# code to mimic structure of json file with bus stopnames and coordiantes (latitude and logitude)
 
+            
             // TODO: Add code to convert this object to a dictionary mapping bus stop names to bus stop coordinates
             public IDictionary<string, Tuple<double, double>> toBusStopsDict() {
                 return null;
@@ -82,7 +102,13 @@ namespace CatCommuter
         // Returns a dictionary mapping from stop names to bus latitude and longitude coordinates
         // Returns null if error
         public static async System.Threading.Tasks.Task<IDictionary<string, Tuple<double,double>>> ReadBusLocations(StorageFile file) {
-            Debug.WriteLine("Reading bus stop locations from file " + Path.GetFileNameWithoutExtension(file.Name));
+            Debug.WriteLine("Reading bus stop locations from file " + Path.GetFileName(file.Name) + "\nAt location " + file.Path + ".\n");
+            Debug.WriteLine(file.OpenReadAsync().ToString());
+
+
+
+            // Attempt 1:
+            /*
             // TODO: Read the bus coordinates into ImportSchedulePage.xaml.cs to plot the bus locations at the correct coordinates
 
             //Get storage file as stream
@@ -96,11 +122,35 @@ namespace CatCommuter
 
 
             // TODO: Read the data from the busStopsStruct into the dictionary
+            */
 
 
+
+
+
+
+            // Attempt 2:
+            // Copied from : https://www.codeproject.com/Questions/1223036/How-to-read-JSON-in-Csharp
+            using (Stream jsonStream = (await file.OpenReadAsync()).AsStreamForRead())
+            {
+                if (jsonStream != null)
+                {
+                    using (StreamReader responseReader = new StreamReader(jsonStream))
+                    {
+                        string response = responseReader.ReadToEnd();
+                        JObject jal = response as XObject;
+                        JsonObject Obj = jal.ToObject<JsonObject>();
+                        // Here You can handle json object values
+                    }
+                }
+            }
 
             return busStopsDict;
         }
+
+
+
+
 
         //static void Main(string[] args)
         //{
