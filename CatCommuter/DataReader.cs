@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using Windows.Devices.Geolocation;
 using Windows.Storage;
 using System.Runtime.Serialization.Json;
-using Newtonsoft.Json.Linq; // has jobject
+//using Newtonsoft.Json.Linq; // has jobject
 //using System.Xml.Linq;
 
 //static int /// <summary>
@@ -69,36 +69,9 @@ namespace CatCommuter
             return null;
         }
 
-        class coordinateStruct
-        {
-            double Coordinate { get; set; }
-        }
+        
 
-        class busStopStruct
-        {
-            string locationName;
-            IDictionary<string, coordinateStruct> coordinates { get; set;}
-        }
-
-        class busLineStruct
-        {
-           List <busStopStruct> BusStopStructs { get; set; }
-        }
-
-        // This struct should be the same format as the bus stop json file being read
-        class busStopJsonStruct {
-            public IDictionary <string, busLineStruct> stops { get; set; }
-            //int i = 0;
-            // TODO: Insert c# code to mimic structure of json file with bus stopnames and coordiantes (latitude and logitude)
-
-            
-            // TODO: Add code to convert this object to a dictionary mapping bus stop names to bus stop coordinates
-            public IDictionary<string, Tuple<double, double>> toBusStopsDict() {
-                return null;
-            }
-        }
-
-        // Takes in with the .json file with the bus schedule data of this line.
+        // Takes in with the .csv file with the bus schedule data of this line.
         // Returns a dictionary mapping from stop names to bus latitude and longitude coordinates
         // Returns null if error
         public static async System.Threading.Tasks.Task<IDictionary<string, Tuple<double,double>>> ReadBusLocations(StorageFile file) {
@@ -131,6 +104,7 @@ namespace CatCommuter
 
             // Attempt 2:
             // Copied from : https://www.codeproject.com/Questions/1223036/How-to-read-JSON-in-Csharp
+            /*
             using (Stream jsonStream = (await file.OpenReadAsync()).AsStreamForRead())
             {
                 if (jsonStream != null)
@@ -138,12 +112,42 @@ namespace CatCommuter
                     using (StreamReader responseReader = new StreamReader(jsonStream))
                     {
                         string response = responseReader.ReadToEnd();
-                        JObject jal = response as XObject;
-                        JsonObject Obj = jal.ToObject<JsonObject>();
+                        JObject jal = response as JObject;  // Requires using Newtonsoft.Json.Linq; // has jobject
+                        busStopJsonStruct Obj = jal.ToObject<busStopJsonStruct>();
                         // Here You can handle json object values
                     }
                 }
             }
+            */
+
+            // Attempt 3: Using CSV file instead of json, to read the locations and coordinates
+            Stream fileStream = (await file.OpenReadAsync()).AsStreamForRead();
+            
+            // Read bus location data in from the .csv file
+            StreamReader stopReader = new StreamReader(fileStream);
+
+            // Declare the dictionary
+            IDictionary<string, Tuple<double, double>> busStopsDict = new Dictionary<string, Tuple<double, double>>();
+            // Each line in file should have times for a new stop
+            while (!stopReader.EndOfStream)
+            {
+                string lineStr = stopReader.ReadLine();
+                string[] lineVals = lineStr.Split(','); //.ToList<string>();
+                Debug.Write("\t" + lineVals[0] + ",\t\t" + Double.Parse(lineVals[1]) + ",\t\t" + Double.Parse(lineVals[2]));
+
+                if (!busStopsDict.ContainsKey(lineVals[0])) { // If the key has not been seen before, then add it. Otherwise just use the first instance of the key, and the initial coordinates.
+                    busStopsDict.Add(lineVals[0], new Tuple<double, double>(Double.Parse(lineVals[1]), Double.Parse(lineVals[2])));
+                    Debug.WriteLine("");
+                } else
+                {
+                    Debug.WriteLine("\t\tDUPLICATE OF PREVIOUS LOCATION NAME: Location not added into dictionary.");
+
+                }
+                
+                
+                
+            }
+
 
             return busStopsDict;
         }

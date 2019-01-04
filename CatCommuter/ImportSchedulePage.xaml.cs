@@ -42,6 +42,7 @@ namespace CatCommuter
         
         private async void ImportButton_ClickAsync(object sender, RoutedEventArgs e)
         {
+            Debug.WriteLine("IMPORTING STOPS!");
             var picker = new Windows.Storage.Pickers.FileOpenPicker();
             //picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
             picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.ComputerFolder;
@@ -63,11 +64,25 @@ namespace CatCommuter
             foreach (string stop in rawData.Keys)
             {
                 ConsoleTextBlock.Text += stop;
+
+                // Sets position to randomized values, for debugging purposes
+                /*
                 BasicGeoposition position = new BasicGeoposition
                 {
                     Latitude = GetRandomNumber(37.304328, 37.350193),
                     Longitude = GetRandomNumber(-120.494791, -120.444666)
                 };
+                */
+
+                // Sets position to Nan values. These will be overwritten when the locations are imported from a file.
+                BasicGeoposition position = new BasicGeoposition
+                {
+                    Latitude = Double.NaN,
+                    Longitude = Double.NaN
+                };
+
+
+
                 BusStop busStop = new BusStop(stop, null, position);
                 BusStopManager.getInstance().busStops.Add(busStop);
                 busLine.addStop(busStop);
@@ -75,10 +90,20 @@ namespace CatCommuter
             BusStopManager.getInstance().busLines[busLine] = new HashSet<DateTime>();
         }
 
+        // double GetRandomNumber (lowerbound, upperbound): Used to randomly generate bus stop coordinates, for debugging purposes, before we were able to read them in from a file.
+        // Used as such:
+        // BasicGeoposition position = new BasicGeoposition
+        // {
+        //     Latitude = GetRandomNumber(37.304328, 37.350193),        // The latitude should be in this range
+        //     Longitude = GetRandomNumber(-120.494791, -120.444666)        // The longitude should be in this range
+        // };
+
+        /*
         public double GetRandomNumber(double minimum, double maximum)
         {
             return random.NextDouble() * (maximum - minimum) + minimum;
         }
+        */
 
         private async void InitializeButton_ClickAsync(object sender, RoutedEventArgs e)
         {
@@ -90,16 +115,25 @@ namespace CatCommuter
             foreach (string stop in rawData.Keys)
             {
                 ConsoleTextBlock.Text += stop;
+                
+                // Sets position to randomized values, for debugging purposes
+                /*
                 BasicGeoposition position = new BasicGeoposition
                 {
                     Latitude = GetRandomNumber(37.304328, 37.350193),
                     Longitude = GetRandomNumber(-120.494791, -120.444666)
-                    //if (BusStopLocationsMap != null) {
-                    //  Latitude = 
-                    //  Longitude = BusStopLocationsMap
-                    //}
+                };
+                */
 
-            };
+                // Sets position to Nan values. These will be overwritten when the locations are imported from a file.
+                BasicGeoposition position = new BasicGeoposition
+                {
+                    Latitude = Double.NaN,
+                    Longitude = Double.NaN
+                };
+
+
+
                 //TODO: times
                 ISet<DateTime> times = new HashSet<DateTime>();
                 foreach (string time in rawData[stop])
@@ -117,7 +151,7 @@ namespace CatCommuter
 
 		private async void ImportStopLocations_Click(object sender, RoutedEventArgs e)
 		{
-			String fileName = "BusStops_test.json";
+			String fileName = "BusStops_test.csv";
 			Debug.WriteLine("***** ImportStopLocations_Click CALLED *****");
             Debug.WriteLine("Attempting to open file " + fileName);
             Debug.WriteLine("");
@@ -185,9 +219,22 @@ namespace CatCommuter
 				};
 				ContentDialogResult result = await LocationFileNotFound.ShowAsync();
 
-				return;
+				
 			}
-			
-		}
-	}
+
+            // TODO: Put data from BusStopLocationsMap into the actual stops
+            // TODO: We should have a single list of bus lines, and a single list of bus stops.
+            //       This way, if we update a single stop, then it is updated for all lines.
+            //       And if we update a single line, then it is updated for all stops.
+            //       Instead of having a list of stops for each line (some of which may be 
+            //       duplicated across several lines), we should have the lines reference the 
+            //       stops they go to. So the stops are passed to the lines by reference.
+            
+            //foreach (BusStop busStop in BusLine.busStops)
+            //{
+
+            //}
+
+        }
+    }
 }
